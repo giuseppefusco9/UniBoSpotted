@@ -25,7 +25,6 @@ CREATE TABLE post (
     categoria_id INT NOT NULL,
     testo TEXT NOT NULL,
     immagine_path VARCHAR(255) DEFAULT NULL, -- Per l'upload foto (Effetto WOW)
-    is_anonymous BOOLEAN DEFAULT FALSE, -- Se TRUE, nel frontend mostri "Anonimo" invece del nome
     data_pubblicazione DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES utenti(id) ON DELETE CASCADE,
     FOREIGN KEY (categoria_id) REFERENCES categorie(id)
@@ -52,15 +51,6 @@ INSERT INTO categorie (nome) VALUES
 ('Mensa'), 
 ('Aule Studio'), 
 ('Feste e Eventi'), 
-('Oggetti Smarriti'), 
+('Oggetti Smarriti'),
+('Esami'),
 ('Affitti');
-
--- Inserimento Utenti di prova
-INSERT INTO utenti (username, email, password, ruolo) VALUES 
-('admin_spot', 'admin@unibo.it', 'pass1234', 'admin'),
-('studente_curioso', 'mario@studio.unibo.it', 'pass1234', 'user');
-
--- Inserimento di uno Spot di prova
-INSERT INTO post (user_id, categoria_id, testo, is_anonymous) VALUES 
-(2, 1, 'Qualcuno ha visto la mia borraccia verde in Sala Studio A?', 0),
-(2, 2, 'Spotted ragazzo con la felpa rossa a Ingegneria: sei bellissimo!', 1); -- Questo è anonimo

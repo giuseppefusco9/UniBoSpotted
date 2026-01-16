@@ -2,10 +2,9 @@
 require_once 'bootstrap.php';
 
 //Base Template
-$templateParams["titolo"] = "UBSpotted - Home";
-$templateParams["nome"] = "lista-post.php";
+$templateParams["titolo"] = "UBSpotted - Search";
+$templateParams["nome"] = "search-post.php";
 $templateParams["categorieTop"] = $dbh->getTopCategories();
-$templateParams["posts"] = $dbh->getPosts();
 
 require 'template/base.php';
 ?>
