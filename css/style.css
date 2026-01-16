@@ -1,13 +1,6 @@
-/* =========================================
-   VARIABILI GLOBALI
-   ========================================= */
 :root {
-    --unibo-red: #ba0909; /* Rosso Università di Bologna */
+    --unibo-red: #ba0909;
 }
-
-/* =========================================
-   UTILITY CLASSES PERSONALIZZATE
-   ========================================= */
 
 /* Sfondo Rosso UniBo (Header/Footer) */
 .bg-unibo {
@@ -19,22 +12,20 @@
 .action-btn {
     cursor: pointer;
     text-decoration: none;
-    color: #6c757d; /* Grigio scuro standard */
+    color: #6c757d;
     transition: color 0.2s ease;
 }
 
 .action-btn:hover {
-    color: var(--unibo-red); /* Diventa rosso quando passi sopra */
+    color: var(--unibo-red);
 }
 
-/* =========================================
-   OVERRIDE BOOTSTRAP: NAVIGAZIONE (SIDEBAR)
-   ========================================= */
+/* SIDEBAR - NAV PILL CUSTOMIZZATE */
 
 /* Link Attivo (Sfondo Rosso) */
 .nav-pills .nav-link.active, 
 .nav-pills .show > .nav-link {
-    background-color: var(--unibo-red) !important; /* !important assicura che vinca su Bootstrap */
+    background-color: var(--unibo-red) !important;
     color: white;
 }
 
@@ -47,7 +38,7 @@
 
 /* Hover sul Link (Grigio chiaro + Testo Rosso) */
 .nav-pills .nav-link:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0 !important;
     color: var(--unibo-red);
 }
 
@@ -57,7 +48,7 @@
 
 /* Il box grigio del singolo commento */
 .comment-box {
-    background-color: #f8f9fa;
+    background-color: var(--unibo-red);
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
@@ -69,11 +60,11 @@
     font-weight: bold;
     font-size: 0.9rem;
     margin-right: 5px;
-    color: #333;
+    color: #e9ecef;
 }
 
 /* Testo del commento */
 .comment-text {
     font-size: 0.9rem;
-    color: #555;
+    color: #e9ecef;
 }
