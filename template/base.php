@@ -12,9 +12,23 @@
 </head>
 
 <body class="bg-light container-fluid p-0 overflow-x-hidden">
-    <header class="bg-unibo py-4 text-center mb-4 shadow-sm">
-        <h1 class="display-5 fw-bold">UniBoSpotted</h1>
-        <h2 class="h5 fw-normal">La community degli studenti di UniBo</h2>
+    <header class="bg-unibo py-4 text-white shadow-sm">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <div class="col-3 text-start">
+                    <img src="upload/logoUnibo.png" alt="Logo" style="width: 120px; height: auto;">
+                </div>
+
+                <div class="col-6 text-center">
+                    <h1 class="display-5 fw-bold mb-0">UniBoSpotted</h1>
+                    <h2 class="h5 fw-normal mb-0">La community degli studenti</h2>
+                </div>
+
+                <div class="col-3"></div>
+
+            </div>
+        </div>
     </header>
 
     <div class="container-fluid px-md-5">

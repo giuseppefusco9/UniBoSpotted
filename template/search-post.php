@@ -10,15 +10,15 @@
                 
                 <input type="search" class="form-control border-start-0 ps-0" placeholder="Cerca post, utenti, categorie..." aria-label="Cerca" name="q">
                 
-                <button class="btn btn-danger" type="submit">Cerca</button>
+                <button class="btn btn-unibo" type="submit">Cerca</button>
             </div>
         </form>
 
         <div class="mt-3">
             <small class="text-muted me-2">Suggerimenti:</small>
-            <span class="badge rounded-pill text-bg-light border me-1">Affitti</span>
-            <span class="badge rounded-pill text-bg-light border me-1">Esami</span>
-            <span class="badge rounded-pill text-bg-light border me-1">Biblioteca</span>
+            <?php foreach($templateParams["categorieTop"] as $categoria): ?>
+                <span class="badge rounded-pill text-bg-light border me-1"><?php echo $categoria["nome"]; ?></span>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

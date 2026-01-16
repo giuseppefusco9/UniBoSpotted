@@ -8,6 +8,21 @@
     color: white;
 }
 
+/* Bottone personalizzato UniBo */
+.btn-unibo {
+    background-color: var(--unibo-red); /* Il tuo rosso #ba0909 */
+    border-color: var(--unibo-red);
+    color: white; /* Testo bianco */
+    font-weight: 500;
+}
+
+/* Effetto quando passi sopra col mouse (diventa più scuro) */
+.btn-unibo:hover {
+    background-color: #8f0606; /* Un rosso più scuro */
+    border-color: #8f0606;
+    color: white;
+}
+
 /* Rende il cursore una "manina" sugli elementi cliccabili che non sono link <a> veri */
 .action-btn {
     cursor: pointer;
