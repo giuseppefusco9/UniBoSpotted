@@ -1,25 +1,79 @@
-/* Creiamo una variabile per il rosso UniBo */
+/* =========================================
+   VARIABILI GLOBALI
+   ========================================= */
 :root {
-    --unibo-red: #ba0909;
+    --unibo-red: #ba0909; /* Rosso Università di Bologna */
 }
 
-/* Sfondo Header e Footer */
+/* =========================================
+   UTILITY CLASSES PERSONALIZZATE
+   ========================================= */
+
+/* Sfondo Rosso UniBo (Header/Footer) */
 .bg-unibo {
     background-color: var(--unibo-red);
     color: white;
 }
 
-/* Stile personalizzato per i link della Navigazione */
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: var(--unibo-red); /* Sfondo rosso quando attivo */
+/* Rende il cursore una "manina" sugli elementi cliccabili che non sono link <a> veri */
+.action-btn {
+    cursor: pointer;
+    text-decoration: none;
+    color: #6c757d; /* Grigio scuro standard */
+    transition: color 0.2s ease;
 }
 
+.action-btn:hover {
+    color: var(--unibo-red); /* Diventa rosso quando passi sopra */
+}
+
+/* =========================================
+   OVERRIDE BOOTSTRAP: NAVIGAZIONE (SIDEBAR)
+   ========================================= */
+
+/* Link Attivo (Sfondo Rosso) */
+.nav-pills .nav-link.active, 
+.nav-pills .show > .nav-link {
+    background-color: var(--unibo-red) !important; /* !important assicura che vinca su Bootstrap */
+    color: white;
+}
+
+/* Link Non Attivo (Testo scuro) */
 .nav-pills .nav-link {
-    color: #333; /* Testo nero quando non attivo */
+    color: #333;
     margin-bottom: 5px;
+    font-weight: 500;
 }
 
+/* Hover sul Link (Grigio chiaro + Testo Rosso) */
 .nav-pills .nav-link:hover {
-    background-color: #f0f0f0; /* Grigio chiaro al passaggio mouse */
+    background-color: #f0f0f0;
     color: var(--unibo-red);
+}
+
+/* =========================================
+   SEZIONE COMMENTI
+   ========================================= */
+
+/* Il box grigio del singolo commento */
+.comment-box {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e9ecef;
+}
+
+/* Nome dell'utente che commenta */
+.comment-user {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    color: #333;
+}
+
+/* Testo del commento */
+.comment-text {
+    font-size: 0.9rem;
+    color: #555;
 }
