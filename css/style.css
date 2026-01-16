@@ -1,0 +1,25 @@
+/* Creiamo una variabile per il rosso UniBo */
+:root {
+    --unibo-red: #ba0909;
+}
+
+/* Sfondo Header e Footer */
+.bg-unibo {
+    background-color: var(--unibo-red);
+    color: white;
+}
+
+/* Stile personalizzato per i link della Navigazione */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: var(--unibo-red); /* Sfondo rosso quando attivo */
+}
+
+.nav-pills .nav-link {
+    color: #333; /* Testo nero quando non attivo */
+    margin-bottom: 5px;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: #f0f0f0; /* Grigio chiaro al passaggio mouse */
+    color: var(--unibo-red);
+}
