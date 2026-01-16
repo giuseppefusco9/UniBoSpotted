@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UniBoSpotted</title> <!--RIVEDI CON TEMPLATEPARAMS-->
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
     <header>
@@ -23,12 +23,10 @@
             <h2>Recent Posts</h2>
             <ul>
                 <li>
-                    <img src="./upload/sample1.jpg" alt="">
-                    <a href="articolo.php?id=1">Sample Post 1</a>
+                    <a>Sample Post 1</a>
                 </li>
                 <li>
-                    <img src="./upload/sample2.jpg" alt="">
-                    <a href="articolo.php?id=2">Sample Post 2</a>
+                    <a>Sample Post 1</a>
                 </li>
             </ul>
         </section>
