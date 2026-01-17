@@ -15,7 +15,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 if(isUserLoggedIn()){
     $templateParams["titolo"] = "UBSpotted - User Home";
     $templateParams["nome"] = "login-home.php";
-    $templateParams["posts"] = $dbh->getPostsByAuthorId($_SESSION["id"]);
+    $templateParams["userposts"] = $dbh->getPostsByAuthorId($_SESSION["id"]);
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }

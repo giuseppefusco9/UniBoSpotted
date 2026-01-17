@@ -107,38 +107,14 @@ class DatabaseHelper {
     /**
      * Verifica Login Utente
      */
-/**
-     * Verifica Login Utente (Accetta sia Username che Email)
-     */
     public function checkLogin($username, $password){
-        // Modifichiamo la query per cercare sia nel campo username CHE nel campo email
-        $query = "SELECT id, username, password, ruolo FROM utenti WHERE username = ? OR email = ?";
-        
+        $query = "SELECT id, username, email FROM utenti WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
-        
-        // --- BLOCCO DEBUG IMPORTANTE ---
-        // Se la preparazione fallisce, questo ci dirà ESATTAMENTE perché.
-        if (!$stmt) {
-            die("Errore nella query SQL (checkLogin): " . $this->db->error);
-        }
-        // -------------------------------
-
-        // Bindiamo due parametri stringa ('ss'):
-        // Passiamo $username due volte perché la query ha due punti di domanda (?)
-        // Uno per 'username = ?' e uno per 'email = ?'
-        $stmt->bind_param('ss', $username, $username);
-        
+        $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if($result->num_rows > 0){
-            $row = $result->fetch_assoc();
-            // Verifica hash password
-            if(password_verify($password, $row['password'])){
-                return $row;
-            }
-        }
-        return false;
-    }
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
 }
 ?>

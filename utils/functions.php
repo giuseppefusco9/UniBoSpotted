@@ -10,13 +10,13 @@ function isActive($pagename){
 }*/
 
 function isUserLoggedIn(){
-    return !empty($_SESSION['idautore']);
+    return !empty($_SESSION['id']);
 }
 
 function registerLoggedUser($user){
-    $_SESSION["idautore"] = $user["idautore"];
+    $_SESSION["id"] = $user["id"];
     $_SESSION["username"] = $user["username"];
-    $_SESSION["nome"] = $user["nome"];
+    $_SESSION["email"] = $user["email"];
 }
 
 /*function getEmptyArticle(){

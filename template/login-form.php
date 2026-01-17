@@ -40,7 +40,7 @@
 
         <div class="text-center mt-4 pt-3 border-top">
             <small class="text-muted">Non sei ancora dei nostri?</small>
-            <a href="registration.php" class="text-decoration-none fw-bold text-danger ms-1">
+            <a href="registration.php" class="text-decoration-none fw-bold text-unibo ms-1">
                 Registrati
             </a>
         </div>
