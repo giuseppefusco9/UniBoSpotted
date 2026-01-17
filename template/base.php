@@ -31,11 +31,11 @@
         </div>
     </header>
 
-    <div class="container-fluid px-md-5">
+    <div class="container-fluid px-md-5 mt-4">
         <div class="row">
-            <nav class="col-md-2 mb-4">
+            <nav class="col-md-2 mb-4 d-none d-md-block">
                 <!-- SIDEBAR NAVIGATION -->
-                <div class="card shadow-sm border-0">
+                <div class="card shadow-sm border-0 sticky-top" style="top: 20px; z-index: 1000;">
                     <div class="card-body p-2">
                         <div class="nav flex-column nav-pills">
                             
@@ -47,7 +47,7 @@
                                 <i class="bi bi-search me-2"></i> Search
                             </a>
 
-                            <a class="nav-link <?php isActive('profile.php'); ?>" href="profile.php">
+                            <a class="nav-link <?php isActive('login.php'); ?>" href="login.php">
                                 <i class="bi bi-person-circle me-2"></i> Profile
                             </a>
 
@@ -93,4 +93,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<nav class="navbar fixed-bottom bg-unibo border-top d-block d-md-none shadow-lg">
+    <div class="container-fluid d-flex justify-content-around">
+        <a class="nav-link text-center <?php isActive('index.php'); ?>" href="index.php">
+            <i class="bi bi-house-door-fill fs-4"></i>
+            <div class="small">Home</div>
+        </a>
+
+        <a class="nav-link text-center <?php isActive('search.php'); ?>" href="search.php">
+            <i class="bi bi-search fs-4"></i>
+            <div class="small">Search</div>
+        </a>
+
+        <a class="nav-link text-center <?php isActive('login.php'); ?>" href="login.php">
+            <i class="bi bi-person-circle fs-4"></i>
+            <div class="small">Profile</div>
+        </a>
+    </div>
+</nav>
 </html>

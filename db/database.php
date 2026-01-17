@@ -36,15 +36,27 @@ class DatabaseHelper {
         }
         
         $stmt = $this->db->prepare($query);
-        
-        if (!$stmt) {
-            die("Errore nella query getPosts: " . $this->db->error);
-        }
 
         if($n > 0){
             $stmt->bind_param('i', $n);
         }
         
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPostsByAuthorId($author_id) {
+        $query = "SELECT p.id, p.testo, p.immagine_path, p.data_pubblicazione, 
+                         c.nome as nome_categoria 
+                  FROM post p
+                  JOIN categorie c ON p.categoria_id = c.id
+                  WHERE p.user_id = ?
+                  ORDER BY p.data_pubblicazione DESC";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $author_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -95,16 +107,33 @@ class DatabaseHelper {
     /**
      * Verifica Login Utente
      */
+/**
+     * Verifica Login Utente (Accetta sia Username che Email)
+     */
     public function checkLogin($username, $password){
-        $query = "SELECT id, username, password, ruolo FROM utenti WHERE username = ?";
+        // Modifichiamo la query per cercare sia nel campo username CHE nel campo email
+        $query = "SELECT id, username, password, ruolo FROM utenti WHERE username = ? OR email = ?";
+        
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $username);
+        
+        // --- BLOCCO DEBUG IMPORTANTE ---
+        // Se la preparazione fallisce, questo ci dirà ESATTAMENTE perché.
+        if (!$stmt) {
+            die("Errore nella query SQL (checkLogin): " . $this->db->error);
+        }
+        // -------------------------------
+
+        // Bindiamo due parametri stringa ('ss'):
+        // Passiamo $username due volte perché la query ha due punti di domanda (?)
+        // Uno per 'username = ?' e uno per 'email = ?'
+        $stmt->bind_param('ss', $username, $username);
+        
         $stmt->execute();
         $result = $stmt->get_result();
 
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
-            // Verifica hash password (quello che abbiamo creato nel DB)
+            // Verifica hash password
             if(password_verify($password, $row['password'])){
                 return $row;
             }
