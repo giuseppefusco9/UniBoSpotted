@@ -16,6 +16,18 @@ if(isUserLoggedIn()){
     $templateParams["titolo"] = "UBSpotted - User Home";
     $templateParams["nome"] = "login-home.php";
     $templateParams["userposts"] = $dbh->getPostsByAuthorId($_SESSION["id"]);
+
+    $userId = $_SESSION['id']; 
+    $stats = $dbh->getUserPostStats($userId);
+    $labels = [];
+    $data = [];
+    foreach($stats as $row){
+        $labels[] = $row['nome'];
+        $data[] = $row['num_post'];
+    }
+    $templateParams["statisticheUser"]["labels"] = $labels;
+    $templateParams["statisticheUser"]["data"] = $data;
+    
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }

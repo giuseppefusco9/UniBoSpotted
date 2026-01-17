@@ -95,6 +95,19 @@
                         <?php endforeach; ?>
                     </div>
                 </aside>
+
+                <!-- USER STATS ASIDE -->
+                <?php if(isUserLoggedIn()): ?>
+                    <aside class="bg-white border rounded shadow-sm p-3 mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-pie-chart-fill text-primary me-2 fs-5"></i>
+                            <h2 class="h5 fw-bold mb-0">Le tue statistiche</h2>
+                        </div>
+                        <div style="position: relative; height:200px; width:100%">
+                            <canvas id="graficoCategorie"></canvas>
+                        </div>
+                    </aside>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -106,6 +119,17 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <?php if(isUserLoggedIn() && isset($templateParams["statisticheUser"])): ?>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/graphicUser.js"></script>
+
+        <script>
+            const labelsPHP = <?php echo json_encode($templateParams["statisticheUser"]["labels"]); ?>;
+            const dataPHP = <?php echo json_encode($templateParams["statisticheUser"]["data"]); ?>;
+            disegnaGraficoTorta(labelsPHP, dataPHP);
+        </script>
+    <?php endif; ?>
 </body>
 
 <!-- MOBILE NAVIGATION -->

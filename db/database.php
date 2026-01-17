@@ -64,6 +64,24 @@ class DatabaseHelper {
     }
 
     /**
+     * Recupera le statistiche dei post per un utente specifico (Per il grafico a torta)
+     */
+    public function getUserPostStats($userId){
+        $query = "SELECT c.nome, COUNT(p.id) as num_post 
+                  FROM post p
+                  JOIN categorie c ON p.categoria_id = c.id
+                  WHERE p.user_id = ? 
+                  GROUP BY c.nome";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
      * Recupera i commenti per un post specifico
      */
     public function getComments($post_id) {
