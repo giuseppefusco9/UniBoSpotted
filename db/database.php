@@ -82,6 +82,16 @@ class DatabaseHelper {
     }
 
     /**
+     * Inserisce un nuovo commento
+     */
+    public function insertComment($postId, $userId, $testo){
+        $query = "INSERT INTO commenti (post_id, user_id, testo, data_commento) VALUES (?, ?, ?, NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iis', $postId, $userId, $testo);
+        return $stmt->execute();
+    }
+
+    /**
      * Recupera le categorie più usate (Per i 'Trend')
      */
     public function getTopCategories() {

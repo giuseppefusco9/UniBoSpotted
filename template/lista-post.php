@@ -40,12 +40,27 @@
                 <?php else: ?>
                     <p class="small text-muted">Non ci sono commenti.</p>
                 <?php endif; ?>
-
-                <form action="#" method="POST" class="input-group mt-3">
-                    <input type="hidden" name="post_id" value="<?php echo $post["id"]; ?>">
-                    <input type="text" class="form-control" placeholder="Scrivi un commento...">
-                    <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-send"></i></button>
-                </form>
+                
+                <?php if(isUserLoggedIn()): ?>
+                    <form action="#" method="POST" class="input-group mt-3">
+                        <input type="hidden" name="post_id" value="<?php echo $post["id"]; ?>">
+                        <input type="text" name="testo" class="form-control" placeholder="Scrivi un commento...">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-send"></i></button>
+                    </form>
+                <?php else: ?>
+                    <div class="text-center mt-4 pt-3 border-top">
+                        <small class="text-muted">Esegui il login per commentare!</small>
+                        <a href="login.php" class="text-decoration-none fw-bold text-unibo ms-1">
+                            Login
+                        </a>
+                    </div>
+                    <div class="text-center mt-4 pt-3 border-top">
+                        <small class="text-muted">Non sei ancora dei nostri?</small>
+                        <a href="registration.php" class="text-decoration-none fw-bold text-unibo ms-1">
+                            Registrati
+                        </a>
+                    </div>
+                <?php endif; ?>
 
             </div>
         </div>

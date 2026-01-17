@@ -15,7 +15,6 @@
     <header class="bg-unibo py-4 text-white shadow-sm">
         <div class="container">
             <div class="row align-items-center">
-                
                 <div class="col-3 text-start">
                     <img src="upload/logoUnibo.png" alt="Logo" style="width: 120px; height: auto;">
                 </div>
