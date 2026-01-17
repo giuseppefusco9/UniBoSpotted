@@ -23,7 +23,7 @@
                     <h1 class="display-5 fw-bold mb-0">UniBoSpotted</h1>
                     <h2 class="h5 fw-normal mb-0">La community degli studenti</h2>
                 </div>
-                <!-- TO BE FIXED -->
+
                 <?php if(isUserLoggedIn()): ?>
                 <div class="col-3 text-end d-none d-md-block">
                     <a href="logout.php" class="btn btn-outline-light">
@@ -31,7 +31,6 @@
                     </a>
                 </div>
                 <?php endif; ?>
-                <!-- ... -->
 
                 <div class="col-3"></div>
 
@@ -60,7 +59,7 @@
                             </a>
 
                             <?php if(isUserLoggedIn()): ?>
-                                <a class="nav-link <?php isActive('add-post.php'); ?>" href="add-post.php">
+                                <a class="nav-link <?php isActive('process-post.php'); ?>" href="process-post.php">
                                     <i class="bi bi-plus me-2"></i> Add post
                                 </a>
                             <?php endif; ?>

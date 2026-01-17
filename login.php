@@ -33,7 +33,7 @@ if(isUserLoggedIn()){
     }
 }
 else{
-    $templateParams["titolo"] = "Blog TW - Login";
+    $templateParams["titolo"] = "UBSpotted - Login";
     $templateParams["nome"] = "login-form.php";
 }
 $templateParams["categorieTop"] = $dbh->getTopCategories();

@@ -143,6 +143,43 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    } 
+    }
+
+    /**
+     * Inserisce un nuovo post
+     */
+    public function insertPost($userId, $categoriaId, $testo, $immaginePath = null){
+        $query = "INSERT INTO post (user_id, categoria_id, testo, immagine_path, data_pubblicazione) 
+                  VALUES (?, ?, ?, ?, NOW())";
+        
+        $stmt = $this->db->prepare($query);
+        // 'iiss' significa: intero, intero, stringa, stringa
+        $stmt->bind_param('iiss', $userId, $categoriaId, $testo, $immaginePath);
+        
+        return $stmt->execute();
+    }
+
+    /**
+     * Aggiorna un post esistente
+     */
+    public function updatePost($id, $userId, $categoriaId, $testo, $immaginePath){
+        $query = "UPDATE post 
+                  SET categoria_id = ?, testo = ?, immagine_path = ? 
+                  WHERE id = ? AND user_id = ?";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('issii', $categoriaId, $testo, $immaginePath, $id, $userId);
+        return $stmt->execute();
+    }
+
+    /**
+     * Cancella un post
+     */
+    public function deletePost($id, $userId){
+        $query = "DELETE FROM post WHERE id = ? AND user_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $id, $userId);
+        return $stmt->execute();
+    }
 }
 ?>

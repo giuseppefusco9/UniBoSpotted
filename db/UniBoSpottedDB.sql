@@ -7,8 +7,7 @@ CREATE TABLE utenti (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL, -- Qui salveremo l'hash, non la password in chiaro!
-    ruolo ENUM('user', 'admin') DEFAULT 'user',
+    password VARCHAR(255) NOT NULL,
     data_registrazione DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -24,7 +23,7 @@ CREATE TABLE post (
     user_id INT NOT NULL,
     categoria_id INT NOT NULL,
     testo TEXT NOT NULL,
-    immagine_path VARCHAR(255) DEFAULT NULL, -- Per l'upload foto (Effetto WOW)
+    immagine_path VARCHAR(255) DEFAULT NULL,
     data_pubblicazione DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES utenti(id) ON DELETE CASCADE,
     FOREIGN KEY (categoria_id) REFERENCES categorie(id)

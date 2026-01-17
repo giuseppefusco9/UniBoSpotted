@@ -1,12 +1,32 @@
-<h3 class = "h4 fw-bold">Ciao, <?php echo $_SESSION['username']; ?>!</h3>
+<h3 class="h4 fw-bold">Ciao, <?php echo $_SESSION['username']; ?>!</h3>
 <?php foreach($templateParams["userposts"] as $post): ?>
     <article class="card shadow-sm border-0 mb-4">
         <div class="card-body">
+            
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="card-title h5 fw-bold">
+                
+                <h3 class="card-title h5 fw-bold mb-0">
                     <?php echo $post["nome_categoria"]; ?>
                 </h3>
-            </div>
+
+                <div class="d-flex align-items-center gap-2">
+                    
+                    
+                    <!--Bottone Modifica
+                    <a href="edit-post.php?id=<?php //echo $post['id']; ?>" class="text-secondary text-decoration-none" title="Modifica">
+                        <i class="bi bi-pencil-square fs-5"></i>
+                    </a>-->
+
+                    <form action="process-post.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo post?');" style="display:inline;">
+                        <input type="hidden" name="action" value="3"> <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                        
+                        <button type="submit" class="btn btn-link p-0 text-danger border-0" title="Elimina">
+                            <i class="bi bi-trash fs-5"></i>
+                        </button>
+                    </form>
+
+                </div>
+                </div>
             
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
             
@@ -51,3 +71,6 @@
         </div>
     </article>
 <?php endforeach; ?>
+<?php if(count($templateParams["userposts"]) == 0): ?>
+    <p class="text-muted">Non hai ancora pubblicato nessuno spot. Cosa aspetti? <a href="process-post.php">Crea il tuo primo spot!</a></p>
+<?php endif; ?>
