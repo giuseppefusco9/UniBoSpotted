@@ -102,7 +102,7 @@
                             <i class="bi bi-pie-chart-fill text-primary me-2 fs-5"></i>
                             <h2 class="h5 fw-bold mb-0">Le tue statistiche</h2>
                         </div>
-                        <div style="position: relative; height:200px; width:100%">
+                        <div class="d-flex justify-content-center" style="position: relative; height: 350px; width: 100%">
                             <canvas id="graficoCategorie"></canvas>
                         </div>
                     </aside>
@@ -148,7 +148,7 @@
         </a>
         
         <?php if(isUserLoggedIn()): ?>
-            <a class="nav-link text-center <?php isActive('add-post.php'); ?>" href="add-post.php">
+            <a class="nav-link text-center <?php isActive('process-post.php'); ?>" href="process-post.php">
                 <i class="bi bi-plus me-2"></i>
                 <div class="small">Add Post</div>
             </a>

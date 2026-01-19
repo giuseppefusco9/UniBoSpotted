@@ -22,7 +22,9 @@ function disegnaGraficoTorta(etichette, datiNumerici) {
         options: {
             responsive: true,
             plugins: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom'
+                }
             }
         }
     });
