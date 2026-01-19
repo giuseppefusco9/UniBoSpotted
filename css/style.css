@@ -23,6 +23,11 @@
     color: white;
 }
 
+.text-unibo {
+    color: var(--unibo-red) !important;
+    fill: var(--unibo-red) !important; /* Sicurezza extra per SVG */
+}
+
 /* Rende il cursore una "manina" sugli elementi cliccabili che non sono link <a> veri */
 .action-btn {
     cursor: pointer;
@@ -67,7 +72,7 @@
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #e9ecef;
+    border: 1px solid #ffffff;
 }
 
 /* Nome dell'utente che commenta */

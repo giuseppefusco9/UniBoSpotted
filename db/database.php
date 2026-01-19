@@ -47,6 +47,19 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPostById($id){
+        $query = "SELECT p.id, p.testo, p.immagine_path, p.categoria_id, p.user_id 
+                  FROM post p 
+                  WHERE p.id = ?";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+
     public function getPostsByAuthorId($author_id) {
         $query = "SELECT p.id, p.testo, p.immagine_path, p.data_pubblicazione, 
                          c.nome as nome_categoria 
@@ -131,18 +144,41 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    /**
+     * Registra un nuovo Utente
+     */
+    public function insertUser($username, $email, $password) {
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("INSERT INTO utenti (username, email, password, admin) VALUES (?, ?, ?, 0)");
+        $stmt->bind_param("sss", $username, $email, $passwordHash);
+
+        try {
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
     
     /**
      * Verifica Login Utente
      */
     public function checkLogin($username, $password){
-        $query = "SELECT id, username, email FROM utenti WHERE username = ? AND password = ?";
+        $query = "SELECT id, username, email, password, admin FROM utenti WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $password);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        if($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            if(password_verify($password, $user['password'])) {
+                return $user;
+            }
+        }
+        
+        return false;
     }
 
     /**

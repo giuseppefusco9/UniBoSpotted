@@ -8,6 +8,7 @@ CREATE TABLE utenti (
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    admin BOOLEAN DEFAULT FALSE, -- TRUE = Admin, FALSE = Utente
     data_registrazione DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -52,4 +53,13 @@ INSERT INTO categorie (nome) VALUES
 ('Feste e Eventi'), 
 ('Oggetti Smarriti'),
 ('Esami'),
-('Affitti');
+('Affitti')
+('Altro');
+
+/* CREDENZIALI ADMIN: Username: Admin Password: admin*/
+
+/* CREDENZIALI USERS:
+User: MarcoRossi / Pass: admin
+User: GiuliaB / Pass: admin
+User: LucaNerd / Pass: admin
+**/

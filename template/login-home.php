@@ -1,4 +1,3 @@
-<h3 class="h4 fw-bold">Ciao, <?php echo $_SESSION['username']; ?>!</h3>
 <?php foreach($templateParams["userposts"] as $post): ?>
     <article class="card shadow-sm border-0 mb-4">
         <div class="card-body">
@@ -10,24 +9,22 @@
                 </h3>
 
                 <div class="d-flex align-items-center gap-2">
-                    
-                    
-                    <!--Bottone Modifica
-                    <a href="edit-post.php?id=<?php //echo $post['id']; ?>" class="text-secondary text-decoration-none" title="Modifica">
+    
+                    <a href="edit-post.php?id=<?php echo $post['id']; ?>" class="btn btn-link p-0 text-secondary border-0" title="Modifica">
                         <i class="bi bi-pencil-square fs-5"></i>
-                    </a>-->
+                    </a>
 
                     <form action="process-post.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo post?');" style="display:inline;">
-                        <input type="hidden" name="action" value="3"> <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                        
+                        <input type="hidden" name="action" value="3"> 
+                        <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+        
                         <button type="submit" class="btn btn-link p-0 text-danger border-0" title="Elimina">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>
 
                 </div>
-                </div>
-            
+            </div>
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
             
             <?php if(!empty($post["immagine_path"])): ?>
@@ -39,6 +36,7 @@
             <small class="text-muted">Pubblicato <?php echo date("d/m/y H:i", strtotime($post["data_pubblicazione"])); ?></small>
             
             <?php
+                // Recupero commenti (se la logica è nel template, altrimenti andrebbe fatto prima)
                 $comments = $dbh->getComments($post["id"]);
             ?>
 
