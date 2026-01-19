@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-3 text-start">
-                    <img src="upload/logoUnibo.png" alt="Logo" style="width: 120px; height: auto;">
+                    <img src="upload/logoUnibo.png" alt="Logo Università di Bologna" style="width: 120px; height: auto;">
                 </div>
 
                 <div class="col-6 text-center">
