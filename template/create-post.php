@@ -38,6 +38,18 @@
                 <div class="form-text">Formati supportati: JPG, JPEG, PNG, GIF.</div>
             </div>
 
+            <div class="mb-4 p-3 bg-light rounded border border-light">
+                <h6 class="fw-bold text-secondary mb-2">
+                    <i class="bi bi-info-circle me-1"></i> Linee guida della community:
+                </h6>
+                <ul class="mb-0 small text-secondary ps-3">
+                    <li>Sii rispettoso e gentile verso gli altri</li>
+                    <li>No attacchi personali o molestie</li>
+                    <li>Mantieniti sugli aspetti universitari</li>
+                    <li>Evita spam e autopromozioni</li>
+                    <li>Gli amministratori si riservano il diritto di rimuovere contenuti inappropriati</li>
+                </ul>
+            </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-unibo btn-lg">Pubblica Spot</button>
             </div>

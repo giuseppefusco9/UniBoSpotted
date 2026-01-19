@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-light container-fluid p-0 overflow-x-hidden">
+<body class="bg-light container-fluid p-0 overflow-x-hidden d-flex flex-column min-vh-100">
     <header class="bg-unibo py-4 text-white shadow-sm">
         <div class="container">
             <div class="row align-items-center">
@@ -111,11 +111,9 @@
         </div>
     </div>
 
-    <div class="row">
-        <footer class="bg-unibo text-white text-center py-3 mt-auto">
-            <p class="mb-0">UniBoSpotted - A.A. 2025/2026</p>
-        </footer>
-    </div>
+    <footer class="bg-unibo text-white text-center py-3 mt-auto">
+        <p class="mb-0">UniBoSpotted - A.A. 2025/2026</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
