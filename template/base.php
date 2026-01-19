@@ -135,7 +135,7 @@
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="guidelines.php" class="text-white-50 text-decoration-none link-light">
+                            <a href="process-guidelines.php" class="text-white-50 text-decoration-none link-light">
                                 Linee Guida Community
                             </a>
                         </li>
