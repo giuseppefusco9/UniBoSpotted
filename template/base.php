@@ -111,8 +111,80 @@
         </div>
     </div>
 
-    <footer class="bg-unibo text-white text-center py-3 mt-auto">
-        <p class="mb-0">UniBoSpotted - A.A. 2025/2026</p>
+    <footer class="bg-unibo text-white pt-5 pb-3 mt-auto mb-5 mb-md-0">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold mb-3">UniBoSpotted</h5>
+                    <p class="small text-white-50">
+                        La community non ufficiale degli studenti dell'Alma Mater Studiorum.
+                        Racconta, condividi e scopri la vita universitaria.
+                    </p>
+                    <p class="small text-white-50 fst-italic">
+                        *Questo sito non è affiliato con l'Università di Bologna.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold mb-3">Link Utili</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <a href="about.php" class="text-white-50 text-decoration-none link-light">
+                                Chi siamo
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="guidelines.php" class="text-white-50 text-decoration-none link-light">
+                                Linee Guida Community
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="text-uppercase fw-bold mb-3">Autori</h5>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span class="fw-bold text-white">Giuseppe Fusco</span>
+                            
+                            <a href="https://www.instagram.com/_.giuseppefusco.__/" class="text-white text-decoration-none" aria-label="Instagram di Giuseppe">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="https://github.com/giuseppefusco9" class="text-white text-decoration-none" aria-label="GitHub di Giuseppe">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </div>
+                        <p class="small text-white-50 mb-0">giuseppe.fusco9@studio.unibo.it</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span class="fw-bold text-white">Lucia Pola</span>
+                            
+                            <a href="https://www.instagram.com/luciapola_/" class="text-white text-decoration-none" aria-label="Instagram di Lucia">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="https://github.com/luciapola04" class="text-white text-decoration-none" aria-label="GitHub di Lucia">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </div>
+                        <p class="small text-white-50 mb-0">lucia.pola@studio.unibo.it</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 border-light opacity-25">
+
+            <div class="row align-items-center">
+                <div class="col-12 text-center text-md-start">
+                    <span class="small text-white-50">
+                        © 2026 UniBoSpotted - Progetto Universitario
+                    </span>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
