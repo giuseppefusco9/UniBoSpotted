@@ -1,7 +1,7 @@
+<h2 class="card-title h2 fw-bold mb-3">Ciao, <?php echo $templateParams["username"];?>!</h2>
 <?php foreach($templateParams["userposts"] as $post): ?>
     <article class="card shadow-sm border-0 mb-4">
-        <div class="card-body">
-            
+        <div class="card-body"> 
             <div class="d-flex justify-content-between align-items-center mb-2">
                 
                 <h3 class="card-title h5 fw-bold mb-0">

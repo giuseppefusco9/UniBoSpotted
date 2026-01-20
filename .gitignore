@@ -182,3 +182,9 @@ Thumbs.db
 # Keep images folder
 !img/
 !img/**
+
+# 1. Ignora TUTTO il contenuto della cartella upload
+upload/*
+
+# 2. Fai un'eccezione SOLO per il logo (il punto esclamativo significa "non ignorare")
+!upload/logoUnibo.png
