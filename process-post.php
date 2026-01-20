@@ -54,10 +54,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
         }
     }
 
-    // AZIONE 2: CANCELLAZIONE
+    // AZIONE 3: CANCELLAZIONE
     elseif($action == 3){
         $postId = intval($_POST["post_id"]);
-        $dbh->deletePost($postId, $userId);
+        $admin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
+        $dbh->deletePost($postId, $userId, $admin);
         $msg = "Spot cancellato!";
     }
 }

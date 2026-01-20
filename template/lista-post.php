@@ -1,11 +1,46 @@
 <?php foreach($templateParams["posts"] as $post): ?>
     <article class="card shadow-sm border-0 mb-4">
         <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-2">
+            
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                
                 <h3 class="card-title h5 fw-bold">
                     <?php echo $post["nome_categoria"]; ?>
                 </h3>
-                <small class="text-muted">Posted by: <?php echo $post["username"]; ?></small>
+
+                <div class="d-flex align-items-center gap-2">
+                    <small class="text-muted">Posted by: <?php echo $post["username"]; ?></small>
+
+                    <?php 
+                        $isAdmin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
+                        $isAuthor = isUserLoggedIn() && $_SESSION['id'] == $post['user_id'];
+
+                        if ($isAdmin || $isAuthor): 
+                    ?>
+                        <form action="process-post.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo post?');" class="m-0 p-0">
+                            
+                            <input type="hidden" name="action" value="3">
+                            <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                            
+                            <input type="hidden" name="return_page" value="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+
+                            <?php if(isset($_GET['q'])): ?>
+                                <input type="hidden" name="q" value="<?php echo htmlspecialchars($_GET['q']); ?>">
+                            <?php endif; ?>
+                            
+                            <button type="submit" class="btn btn-link p-0 text-danger border-0 ms-2" title="Elimina Post">
+                                <i class="bi bi-trash fs-5"></i>
+                            </button>
+                        </form>
+
+                        <?php if($isAuthor): ?>
+                            <a href="edit-post.php?id=<?php echo $post['id']; ?>" class="text-secondary ms-1" title="Modifica">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                        <?php endif; ?>
+
+                    <?php endif; ?>
+                </div>
             </div>
             
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
@@ -18,9 +53,7 @@
         <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
             <small class="text-muted">Pubblicato <?php echo date("d/m/y H:i", strtotime($post["data_pubblicazione"])); ?></small>
             
-            <?php
-                $comments = $dbh->getComments($post["id"]);
-            ?>
+            <?php $comments = $dbh->getComments($post["id"]); ?>
 
             <div class="action-btn" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#comments-post-<?php echo $post["id"]; ?>" aria-expanded="false">
                 <i class="bi bi-chat-dots me-1"> <?php echo count($comments); ?> Commenti</i>
@@ -50,15 +83,11 @@
                 <?php else: ?>
                     <div class="text-center mt-4 pt-3 border-top">
                         <small class="text-muted">Esegui il login per commentare!</small>
-                        <a href="login.php" class="text-decoration-none fw-bold text-unibo ms-1">
-                            Login
-                        </a>
+                        <a href="login.php" class="text-decoration-none fw-bold text-unibo ms-1">Login</a>
                     </div>
                     <div class="text-center mt-4 pt-3 border-top">
                         <small class="text-muted">Non sei ancora dei nostri?</small>
-                        <a href="registration.php" class="text-decoration-none fw-bold text-unibo ms-1">
-                            Registrati
-                        </a>
+                        <a href="registration.php" class="text-decoration-none fw-bold text-unibo ms-1">Registrati</a>
                     </div>
                 <?php endif; ?>
 

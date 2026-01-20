@@ -209,12 +209,18 @@ class DatabaseHelper {
     }
 
     /**
-     * Cancella un post
+     * Cancella un post (Se admin=TRUE allora puoi cancellare qualsiasi post)
      */
-    public function deletePost($id, $userId){
-        $query = "DELETE FROM post WHERE id = ? AND user_id = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $id, $userId);
+    public function deletePost($id, $userId, $admin = FALSE){
+        if($admin) {
+            $query = "DELETE FROM post WHERE id = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $postId);
+        } else {
+            $query = "DELETE FROM post WHERE id = ? AND user_id = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii', $id, $userId);
+        }
         return $stmt->execute();
     }
 
