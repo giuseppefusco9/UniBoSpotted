@@ -97,18 +97,17 @@ class DatabaseHelper {
     /**
      * Recupera i commenti per un post specifico
      */
-    public function getComments($post_id) {
-        $query = "SELECT c.testo, c.data_commento, u.username 
+    public function getComments($postId){
+        $query = "SELECT c.id as idCommento, c.testo, c.data_commento, c.user_id, u.username 
                   FROM commenti c 
                   JOIN utenti u ON c.user_id = u.id 
-                  WHERE c.post_id = ? 
-                  ORDER BY c.data_commento ASC";
+                  WHERE c.post_id = ?";
         
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $post_id);
+        $stmt->bind_param('i', $postId);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -119,6 +118,16 @@ class DatabaseHelper {
         $query = "INSERT INTO commenti (post_id, user_id, testo, data_commento) VALUES (?, ?, ?, NOW())";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iis', $postId, $userId, $testo);
+        return $stmt->execute();
+    }
+
+    /**
+     * Elimina un commento basandosi sul suo ID
+     */
+    public function deleteComment($commentId){
+        $query = "DELETE FROM commenti WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $commentId);
         return $stmt->execute();
     }
 

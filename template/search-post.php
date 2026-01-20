@@ -37,67 +37,24 @@
         <span class="text-dark"><?php echo count($templateParams["searchResults"]); ?></span>
     </h4>
 
-    <?php if(count($templateParams["searchResults"]) > 0): ?>
-        
-        <?php foreach($templateParams["searchResults"] as $post): ?>
-            <?php 
-                // 1. Calcolo i permessi
-                $isAdmin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
-                // Nota: Assicurati che la query searchPosts nel DB restituisca "user_id"
-                $isAuthor = isUserLoggedIn() && isset($post['user_id']) && $_SESSION['id'] == $post['user_id'];
+    <?php 
+        // A. PREPARAZIONE DATI
+        // Assegno i risultati della ricerca alla variabile universale $postsLista
+        $postsLista = $templateParams["searchResults"];
+
+        // B. INCLUSIONE LISTA
+        if(count($postsLista) > 0){
+            require 'template/lista-post.php';
+        } 
+        // C. CASO VUOTO (Specifico per la Ricerca)
+        else {
             ?>
-    
-            <article class="card shadow-sm border-0 mb-4">
-                <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h3 class="card-title h5 fw-bold mb-0">
-                            <?php echo $post["nome_categoria"]; ?>
-                        </h3>
-            
-                        <div class="d-flex align-items-center gap-2">
-                            <small class="text-muted">Posted by:<?php echo $post["username"]; ?></small>
-
-                            <?php if($isAuthor): ?>
-                                <a href="edit-post.php?id=<?php echo $post['id']; ?>&return_page=search.php&q=<?php echo urlencode($templateParams["searchKeyword"]); ?>" 
-                                class="btn btn-link p-0 text-secondary border-0" title="Modifica">
-                                    <i class="bi bi-pencil-square fs-5"></i>
-                                </a>
-                            <?php endif; ?>
-
-                            <?php if($isAdmin || $isAuthor): ?>
-                                <form action="process-post.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo post?');" class="m-0 p-0 d-inline-block">
-                                    <input type="hidden" name="action" value="3">
-                                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                    <input type="hidden" name="return_page" value="search.php">
-                                    <input type="hidden" name="q" value="<?php echo htmlspecialchars($templateParams["searchKeyword"]); ?>">
-
-                                    <button type="submit" class="btn btn-link p-0 text-danger border-0 ms-1" title="Elimina Post">
-                                        <i class="bi bi-trash fs-5"></i>
-                                    </button>
-                                </form>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-            
-                    <p class="card-text"><?php echo $post["testo"]; ?></p>
-            
-                    <?php if(!empty($post["immagine_path"])): ?>
-                        <img src="<?php echo $post["immagine_path"]; ?>" class="img-fluid rounded mb-2">
-                    <?php endif; ?>
-                </div>
-        
-                <div class="card-footer bg-white border-top-0">
-                    <small class="text-muted">Pubblicato <?php echo date("d/m/y H:i", strtotime($post["data_pubblicazione"])); ?></small>
-                </div>
-            </article>
-        <?php endforeach; ?>
-
-    <?php else: ?>
-        <div class="alert alert-warning text-center" role="alert">
-            <i class="bi bi-emoji-frown display-4 d-block mb-2"></i>
-            Nessun post trovato. Prova con parole diverse!
-        </div>
-    <?php endif; ?>
+            <div class="alert alert-warning text-center" role="alert">
+                <i class="bi bi-emoji-frown display-4 d-block mb-2"></i>
+                Nessun post trovato. Prova con parole diverse!
+            </div>
+            <?php
+        }
+    ?>
 
 <?php endif; ?>
