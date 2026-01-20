@@ -60,7 +60,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
         $admin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
         $dbh->deletePost($postId, $userId, $admin);
         $returnPage = isset($_POST["return_page"]) ? $_POST["return_page"] : "login.php";
-        header("Location: $returnPage?formmsg=" . urlencode("Spot cancellato!"));
+        $queryString = "";
+        if(isset($_POST["q"])){
+            $queryString = "&q=" . urlencode($_POST["q"]);
+        }
+        header("Location: $returnPage?formmsg=" . urlencode("Spot cancellato!") . $queryString);
         exit;
     }
 }

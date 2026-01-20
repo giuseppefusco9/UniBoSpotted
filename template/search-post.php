@@ -40,24 +40,48 @@
     <?php if(count($templateParams["searchResults"]) > 0): ?>
         
         <?php foreach($templateParams["searchResults"] as $post): ?>
+            <?php 
+                // 1. Calcolo i permessi
+                $isAdmin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
+                // Nota: Assicurati che la query searchPosts nel DB restituisca "user_id"
+                $isAuthor = isUserLoggedIn() && isset($post['user_id']) && $_SESSION['id'] == $post['user_id'];
+            ?>
+    
             <article class="card shadow-sm border-0 mb-4">
                 <div class="card-body">
-                    
+            
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h3 class="card-title h5 fw-bold mb-0">
                             <?php echo $post["nome_categoria"]; ?>
                         </h3>
-                        
-                        <small class="text-muted">@<?php echo $post["username"]; ?></small>
+                
+                        <div class="d-flex align-items-center gap-2">
+                            <small class="text-muted">@<?php echo $post["username"]; ?></small>
+
+                            <?php if($isAdmin || $isAuthor): ?>
+                                <form action="process-post.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo post?');" class="m-0 p-0 d-inline-block">
+                            
+                                    <input type="hidden" name="action" value="3">
+                                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                            
+                                    <input type="hidden" name="return_page" value="search.php">
+                                    <input type="hidden" name="q" value="<?php echo htmlspecialchars($templateParams["searchKeyword"]); ?>">
+                            
+                                    <button type="submit" class="btn btn-link p-0 text-danger border-0 ms-1" title="Elimina Post">
+                                        <i class="bi bi-trash fs-5"></i>
+                                    </button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    
+            
                     <p class="card-text"><?php echo $post["testo"]; ?></p>
-                    
+            
                     <?php if(!empty($post["immagine_path"])): ?>
                         <img src="<?php echo $post["immagine_path"]; ?>" class="img-fluid rounded mb-2">
                     <?php endif; ?>
                 </div>
-                
+        
                 <div class="card-footer bg-white border-top-0">
                     <small class="text-muted">Pubblicato <?php echo date("d/m/y H:i", strtotime($post["data_pubblicazione"])); ?></small>
                 </div>

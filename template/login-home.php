@@ -64,8 +64,8 @@
                 <?php if(count($comments) > 0): ?>
                     <?php foreach($comments as $comment): ?>
                         <div class="comment-box mb-2 border-bottom pb-2">
-                            <span class="comment-user fw-bold">@<?php echo $comment["username"]; ?>:</span>
-                            <span class="comment-text text-secondary"><?php echo $comment["testo"]; ?></span>
+                            <span class="comment-user">@<?php echo $comment["username"]; ?>:</span>
+                            <span class="comment-text"><?php echo $comment["testo"]; ?></span>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
