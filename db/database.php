@@ -217,5 +217,29 @@ class DatabaseHelper {
         $stmt->bind_param('ii', $id, $userId);
         return $stmt->execute();
     }
+
+    /**
+     * Cerca post per testo, categoria o username
+     */
+    public function searchPosts($keyword){
+        // Mettiamo i % per cercare la parola ovunque nella frase
+        $param = "%" . $keyword . "%";
+
+        $query = "SELECT p.id, p.testo, p.immagine_path, p.data_pubblicazione, 
+                         u.username, c.nome as nome_categoria, p.user_id 
+                  FROM post p
+                  JOIN utenti u ON p.user_id = u.id
+                  JOIN categorie c ON p.categoria_id = c.id
+                  WHERE p.testo LIKE ? OR u.username LIKE ? OR c.nome LIKE ?
+                  ORDER BY p.data_pubblicazione DESC";
+        
+        $stmt = $this->db->prepare($query);
+        // 'sss' perché cerchiamo la stringa in 3 colonne diverse
+        $stmt->bind_param('sss', $param, $param, $param);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

@@ -54,31 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
         }
     }
 
-    /*
-     AZIONE 2: MODIFICA
-    elseif($action == 2){
-        $postId = intval($_POST["post_id"]);
-        $categoria = intval($_POST["categoria"]);
-        $testo = htmlspecialchars($_POST["testo"]);
-        $oldImage = $_POST["old_image"]; // Immagine vecchia (hidden input)
-        $imagePath = $oldImage; // Di base teniamo quella vecchia
-
-        // Se l'utente ha caricato una NUOVA immagine
-        if(isset($_FILES["immagine"]) && $_FILES["immagine"]["size"] > 0){
-            list($result, $uploadMsg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
-            if($result == 1){
-                $imagePath = $uploadMsg;
-            } else {
-                $msg = "Errore aggiornamento immagine: " . $uploadMsg;
-            }
-        }
-
-        $dbh->updatePost($postId, $userId, $categoria, $testo, $imagePath);
-        $msg = "Spot aggiornato!";
-        exit;
-    }*/
-
-    // AZIONE 3: CANCELLAZIONE
+    // AZIONE 2: CANCELLAZIONE
     elseif($action == 3){
         $postId = intval($_POST["post_id"]);
         $dbh->deletePost($postId, $userId);
