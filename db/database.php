@@ -24,7 +24,7 @@ class DatabaseHelper {
      * Recupera i Post con Autore e Categoria
      */
     public function getPosts($n = -1){
-        $query = "SELECT p.id, p.testo, p.immagine_path, p.data_pubblicazione, 
+        $query = "SELECT p.id, p.user_id, p.testo, p.immagine_path, p.data_pubblicazione, 
                          u.username, c.nome as nome_categoria 
                   FROM post p
                   JOIN utenti u ON p.user_id = u.id
