@@ -53,7 +53,7 @@ INSERT INTO categorie (nome) VALUES
 ('Feste e Eventi'), 
 ('Oggetti Smarriti'),
 ('Esami'),
-('Affitti')
+('Affitti'),
 ('Altro');
 
 /* CREDENZIALI ADMIN: Username: Admin Password: admin*/

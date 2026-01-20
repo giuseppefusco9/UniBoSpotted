@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save_edit"])){
     if(isset($_FILES["immagine"]) && $_FILES["immagine"]["size"] > 0){
         
         // CORREZIONE QUI: Cartella "upload/"
-        list($result, $uploadMsg) = uploadImage("upload/", $_FILES["immagine"]);
+        list($result, $uploadMsg) = uploadImage(UPLOAD_DIR, $_FILES["immagine"]);
         
         if($result == 1){
             $imagePath = $uploadMsg; // $uploadMsg ora contiene il percorso (es. "upload/foto.jpg")
@@ -54,7 +54,7 @@ if(!$post || $post["user_id"] != $_SESSION["id"]){
 
 // 4. PREPARAZIONE PAGINA
 $templateParams["titolo"] = "UBSpotted - Modifica Post";
-$templateParams["nome"] = "template/edit-post-form.php";
+$templateParams["nome"] = "edit-post-form.php";
 $templateParams["categorie"] = $dbh->getCategories();
 $templateParams["post"] = $post; 
 
