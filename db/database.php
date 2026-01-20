@@ -61,7 +61,7 @@ class DatabaseHelper {
     }
 
     public function getPostsByAuthorId($author_id) {
-        $query = "SELECT p.id, p.testo, p.immagine_path, p.data_pubblicazione, 
+        $query = "SELECT p.id, p.user_id, p.testo, p.immagine_path, p.data_pubblicazione, 
                          c.nome as nome_categoria 
                   FROM post p
                   JOIN categorie c ON p.categoria_id = c.id
