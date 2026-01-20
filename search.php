@@ -3,12 +3,17 @@ require_once 'bootstrap.php';
 
 // Base Template
 $templateParams["titolo"] = "UBSpotted - Search";
-$templateParams["nome"] = "template/search-post.php"; // Assicurati del percorso template/
+$templateParams["nome"] = "search-post.php";
 $templateParams["categorieTop"] = $dbh->getTopCategories();
 
 // Inizializziamo i risultati vuoti
 $templateParams["searchResults"] = [];
 $templateParams["searchKeyword"] = "";
+
+//Messaggio successo/errore
+if(isset($_GET["formmsg"])){
+    $templateParams["formmsg"] = htmlspecialchars($_GET["formmsg"]);
+}
 
 // LOGICA DI RICERCA
 if(isset($_GET["q"])){

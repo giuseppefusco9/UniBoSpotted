@@ -79,6 +79,13 @@
             </nav>
 
             <main class="col-md-6 mb-4">
+                <?php if(isset($templateParams["formmsg"])): ?>
+                    <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-3" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        <?php echo $templateParams["formmsg"]; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
                 <?php
                 if(isset($templateParams["nome"])){
                     require($templateParams["nome"]);

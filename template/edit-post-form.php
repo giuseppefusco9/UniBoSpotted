@@ -16,6 +16,8 @@
             <input type="hidden" name="post_id" value="<?php echo $templateParams['post']['id']; ?>">
             <input type="hidden" name="old_image" value="<?php echo $templateParams['post']['immagine_path']; ?>">
 
+            <input type="hidden" name="return_page" value="<?php echo isset($templateParams['return_page']) ? htmlspecialchars($templateParams['return_page']) : 'login.php'; ?>">
+            <input type="hidden" name="q" value="<?php echo isset($templateParams['q']) ? htmlspecialchars($templateParams['q']) : ''; ?>">
             <div class="mb-3">
                 <label class="form-label fw-bold">Categoria</label>
                 <select name="categoria" class="form-select" required>
@@ -52,7 +54,17 @@
             </div>
 
             <div class="d-grid gap-2 d-md-flex">
-                <a href="login.php" class="btn btn-outline-secondary btn-lg flex-grow-1">Annulla</a>
+                
+                <?php 
+                    $backLink = isset($templateParams['return_page']) ? $templateParams['return_page'] : 'login.php';
+                    
+                    // Se c'è una ricerca, la aggiungiamo al link di annulla
+                    if(isset($templateParams['q']) && !empty($templateParams['q'])){
+                        $backLink .= "?q=" . urlencode($templateParams['q']);
+                    }
+                ?>
+                <a href="<?php echo htmlspecialchars($backLink); ?>" class="btn btn-outline-secondary btn-lg flex-grow-1">Annulla</a>
+
                 <button type="submit" name="save_edit" class="btn btn-unibo btn-lg flex-grow-1">Salva Modifiche</button>
             </div>
 

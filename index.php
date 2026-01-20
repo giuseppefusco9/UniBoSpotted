@@ -1,6 +1,10 @@
 <?php
 require_once 'bootstrap.php';
 
+if(isset($_GET["formmsg"])){
+    $templateParams["formmsg"] = htmlspecialchars($_GET["formmsg"]);
+}
+
 if(isUserLoggedIn()){
     $userId = $_SESSION['id']; 
     

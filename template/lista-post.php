@@ -1,4 +1,10 @@
 <?php foreach($templateParams["posts"] as $post): ?>
+    <?php 
+        $isAdmin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
+        $isAuthor = isUserLoggedIn() && $_SESSION['id'] == $post['user_id'];
+
+    ?>
+
     <article class="card shadow-sm border-0 mb-4">
         <div class="card-body">
             
@@ -11,12 +17,14 @@
                 <div class="d-flex align-items-center gap-2">
                     <small class="text-muted">Posted by: <?php echo $post["username"]; ?></small>
 
-                    <?php 
-                        $isAdmin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
-                        $isAuthor = isUserLoggedIn() && $_SESSION['id'] == $post['user_id'];
+                    <?php if($isAuthor): ?>
+                        <a href="edit-post.php?id=<?php echo $post['id']; ?>&return_page=<?php echo basename($_SERVER['PHP_SELF']); ?>" 
+                            class="text-secondary ms-1" title="Modifica">
+                            <i class="bi bi-pencil-square fs-5"></i>
+                        </a>
+                    <?php endif; ?>
 
-                        if ($isAdmin || $isAuthor): 
-                    ?>
+                    <?php if($isAdmin || $isAuthor): ?>
                         <form action="process-post.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo post?');" class="m-0 p-0">
                             
                             <input type="hidden" name="action" value="3">
@@ -32,13 +40,6 @@
                                 <i class="bi bi-trash fs-5"></i>
                             </button>
                         </form>
-
-                        <?php if($isAuthor): ?>
-                            <a href="edit-post.php?id=<?php echo $post['id']; ?>" class="text-secondary ms-1" title="Modifica">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                        <?php endif; ?>
-
                     <?php endif; ?>
                 </div>
             </div>
