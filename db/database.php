@@ -60,13 +60,18 @@ class DatabaseHelper {
         return $result->fetch_assoc();
     }
 
+    /** 
+     * Recupera i Post di un autore specifico 
+     */
     public function getPostsByAuthorId($author_id) {
         $query = "SELECT p.id, p.user_id, p.testo, p.immagine_path, p.data_pubblicazione, 
-                         c.nome as nome_categoria 
-                  FROM post p
-                  JOIN categorie c ON p.categoria_id = c.id
-                  WHERE p.user_id = ?
-                  ORDER BY p.data_pubblicazione DESC";
+                        c.nome as nome_categoria,
+                        u.username 
+                FROM post p
+                JOIN categorie c ON p.categoria_id = c.id
+                JOIN utenti u ON p.user_id = u.id 
+                WHERE p.user_id = ?
+                ORDER BY p.data_pubblicazione DESC";
         
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $author_id);

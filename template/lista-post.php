@@ -102,7 +102,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                         <input type="hidden" name="q" value="<?php echo htmlspecialchars($_GET['q']); ?>">
                                     <?php endif; ?>
 
-                                    <button type="submit" class="btn btn-sm btn-link text-danger p-0 border-0 ms-2" title="Elimina commento">
+                                    <button type="submit" class="btn btn-sm btn-link text-white p-0 border-0 ms-2" title="Elimina commento">
                                         <i class="bi bi-x-circle"></i>
                                     </button>
                                 </form>
