@@ -59,7 +59,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
         $postId = intval($_POST["post_id"]);
         $admin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
         $dbh->deletePost($postId, $userId, $admin);
-        $msg = "Spot cancellato!";
+        $returnPage = isset($_POST["return_page"]) ? $_POST["return_page"] : "login.php";
+        header("Location: $returnPage?formmsg=" . urlencode("Spot cancellato!"));
+        exit;
     }
 }
 

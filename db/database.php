@@ -215,7 +215,7 @@ class DatabaseHelper {
         if($admin) {
             $query = "DELETE FROM post WHERE id = ?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('i', $postId);
+            $stmt->bind_param('i', $id);
         } else {
             $query = "DELETE FROM post WHERE id = ? AND user_id = ?";
             $stmt = $this->db->prepare($query);
