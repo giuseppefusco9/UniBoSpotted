@@ -34,7 +34,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                            class="text-secondary ms-1" 
                            title="Modifica"
                            aria-label="Modifica il post">
-                            <i class="bi bi-pencil-square fs-5" aria-hidden="true"></i>
+                            <span class="bi bi-pencil-square fs-5" aria-hidden="true"></span>
                         </a>
                     <?php endif; ?>
 
@@ -51,7 +51,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                             <?php endif; ?>
                             
                             <button type="submit" class="btn btn-link p-0 text-danger border-0 ms-2" title="Elimina Post" aria-label="Elimina Post">
-                                <i class="bi bi-trash fs-5" aria-hidden="true"></i>
+                                <span class="bi bi-trash fs-5" aria-hidden="true"></span>
                             </button>
                         </form>
                     <?php endif; ?>
@@ -61,9 +61,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
             
             <?php if(!empty($post["immagine_path"])): ?>
-                <img src="<?php echo $post["immagine_path"]; ?>" 
-                     alt="Immagine allegata al post di <?php echo htmlspecialchars($post["username"]); ?>" 
-                     class="img-fluid rounded mb-2">
+                <img src="<?php echo $post["immagine_path"]; ?>" alt="Immagine allegata al post di <?php echo htmlspecialchars($post["username"]); ?>" class="img-fluid rounded mb-2">
             <?php endif; ?>
         </div>
         
@@ -78,7 +76,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                     data-bs-target="#comments-post-<?php echo $post["id"]; ?>" 
                     aria-expanded="false" 
                     aria-controls="comments-post-<?php echo $post["id"]; ?>">
-                <i class="bi bi-chat-dots me-1" aria-hidden="true"></i> 
+                <span class="bi bi-chat-dots me-1" aria-hidden="true"></span> 
                 <?php echo count($comments); ?> Commenti
             </button>
         </div>
@@ -109,7 +107,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                     <?php endif; ?>
 
                                     <button type="submit" class="btn btn-sm btn-link text-white p-0 border-0 ms-2" title="Elimina commento" aria-label="Elimina commento">
-                                        <i class="bi bi-x-circle text-danger" aria-hidden="true"></i>
+                                        <span class="bi bi-x-circle text-danger" aria-hidden="true"></span>
                                     </button>
                                 </form>
                             <?php endif; ?>
@@ -138,7 +136,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                required>
                                
                         <button class="btn btn-outline-secondary" type="submit" aria-label="Invia commento">
-                            <i class="bi bi-send" aria-hidden="true"></i>
+                            <span class="bi bi-send" aria-hidden="true"></span>
                         </button>
                     </form>
                 <?php else: ?>
