@@ -22,7 +22,7 @@
             <div class="card h-100 border-0 shadow-sm p-3">
                 <div class="card-body">
                     <div class="text-unibo mb-3">
-                        <i class="bi bi-chat-quote-fill display-4" aria-hidden="true"></i>
+                        <span class="bi bi-chat-quote-fill display-4" aria-hidden="true"></span>
                     </div>
                     <h3 class="h5 fw-bold text-dark">Libertà di Parola</h3>
                     <p class="text-secondary">
@@ -37,7 +37,7 @@
             <div class="card h-100 border-0 shadow-sm p-3">
                 <div class="card-body">
                     <div class="text-unibo mb-3">
-                        <i class="bi bi-shield-lock-fill display-4" aria-hidden="true"></i>
+                        <span class="bi bi-shield-lock-fill display-4" aria-hidden="true"></span>
                     </div>
                     <h3 class="h5 fw-bold text-dark">Anonimato Sicuro</h3>
                     <p class="text-secondary">
@@ -52,7 +52,7 @@
             <div class="card h-100 border-0 shadow-sm p-3">
                 <div class="card-body">
                     <div class="text-unibo mb-3">
-                        <i class="bi bi-heart-fill display-4" aria-hidden="true"></i>
+                        <span class="bi bi-heart-fill display-4" aria-hidden="true"></span>
                     </div>
                     <h3 class="h5 fw-bold text-dark">Community Reale</h3>
                     <p class="text-secondary">
@@ -86,9 +86,9 @@
                 </p>
                 
                 <div class="alert alert-light border mt-4 d-inline-block text-start" role="alert">
-                    <h5 class="alert-heading h6 fw-bold">
-                        <i class="bi bi-info-circle me-2" aria-hidden="true"></i>Nota Importante
-                    </h5>
+                    <h3 class="alert-heading h6 fw-bold">
+                        <span class="bi bi-info-circle me-2" aria-hidden="true"></span>Nota Importante
+                    </h3>
                     <p class="mb-0 small text-secondary">
                         UniBoSpotted è un progetto indipendente realizzato dagli studenti. 
                         <strong>Non siamo affiliati ufficialmente</strong> con l'Alma Mater Studiorum.
