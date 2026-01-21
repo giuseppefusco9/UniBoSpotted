@@ -11,7 +11,7 @@
         <?php endif; ?>
 
         <div class="mt-3 text-center small text-secondary">
-            <i class="bi bi-info-circle me-1"></i>
+            <span class="bi bi-info-circle me-1"></span>
             Prima di pubblicare, assicurati di rispettare le 
             <a href="process-guidelines.php" class="text-decoration-underline text-dark fw-bold">
                 linee guida della community
