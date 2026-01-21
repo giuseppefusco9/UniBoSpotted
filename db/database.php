@@ -47,6 +47,9 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /** 
+     * Recupera un post specifico 
+     */
     public function getPostById($id){
         $query = "SELECT p.id, p.testo, p.immagine_path, p.categoria_id, p.user_id 
                   FROM post p 
@@ -223,7 +226,7 @@ class DatabaseHelper {
     }
 
     /**
-     * Cancella un post (Se admin=TRUE allora puoi cancellare qualsiasi post)
+     * Cancella un post
      */
     public function deletePost($id, $userId, $admin = FALSE){
         if($admin) {
@@ -274,6 +277,9 @@ class DatabaseHelper {
         return $row['total'];
     }
 
+    /**
+     * Conta il numero di commenti di un autore specifico
+     */
     public function getNumberOfComments($author_id){
         $query = "SELECT COUNT(*) as total FROM commenti WHERE user_id = ?";
         $stmt = $this->db->prepare($query);
