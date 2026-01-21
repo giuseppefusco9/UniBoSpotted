@@ -2,7 +2,7 @@
 if(!isset($postsLista)){
     $postsLista = $templateParams["posts"];
 }
-// Recuperiamo l'ID del post da tenere aperto (se presente nell'URL)
+
 $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
 ?>
 
@@ -11,14 +11,13 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
         $isAdmin = !empty($_SESSION['admin']) && $_SESSION['admin'] == true;
         $isAuthor = isUserLoggedIn() && isset($post['user_id']) && $_SESSION['id'] == $post['user_id'];
         
-        // CALCOLO CLASSE CSS: Se l'ID corrisponde, aggiungo "show" per tenerlo aperto
         $collapseClass = "collapse";
         if($post['id'] == $openPostId){
             $collapseClass = "collapse show"; 
         }
     ?>
 
-    <article class="card shadow-sm border-0 mb-4">
+    <article class="card shadow-sm border-0 mb-4" id="post-<?php echo $post['id']; ?>">
         <div class="card-body">
             
             <div class="d-flex justify-content-between align-items-start mb-2">
@@ -32,8 +31,10 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
 
                     <?php if($isAuthor): ?>
                         <a href="edit-post.php?id=<?php echo $post['id']; ?>&return_page=<?php echo basename($_SERVER['PHP_SELF']); ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>" 
-                            class="text-secondary ms-1" title="Modifica">
-                            <i class="bi bi-pencil-square fs-5"></i>
+                           class="text-secondary ms-1" 
+                           title="Modifica"
+                           aria-label="Modifica il post">
+                            <i class="bi bi-pencil-square fs-5" aria-hidden="true"></i>
                         </a>
                     <?php endif; ?>
 
@@ -49,8 +50,8 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                 <input type="hidden" name="q" value="<?php echo htmlspecialchars($_GET['q']); ?>">
                             <?php endif; ?>
                             
-                            <button type="submit" class="btn btn-link p-0 text-danger border-0 ms-2" title="Elimina Post">
-                                <i class="bi bi-trash fs-5"></i>
+                            <button type="submit" class="btn btn-link p-0 text-danger border-0 ms-2" title="Elimina Post" aria-label="Elimina Post">
+                                <i class="bi bi-trash fs-5" aria-hidden="true"></i>
                             </button>
                         </form>
                     <?php endif; ?>
@@ -60,7 +61,9 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
             
             <?php if(!empty($post["immagine_path"])): ?>
-                <img src="<?php echo $post["immagine_path"]; ?>" class="img-fluid rounded mb-2">
+                <img src="<?php echo $post["immagine_path"]; ?>" 
+                     alt="Immagine allegata al post di <?php echo htmlspecialchars($post["username"]); ?>" 
+                     class="img-fluid rounded mb-2">
             <?php endif; ?>
         </div>
         
@@ -69,9 +72,15 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
             
             <?php $comments = $dbh->getComments($post["id"]); ?>
 
-            <div class="action-btn" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#comments-post-<?php echo $post["id"]; ?>" aria-expanded="false">
-                <i class="bi bi-chat-dots me-1"> <?php echo count($comments); ?> Commenti</i>
-            </div>
+            <button class="btn btn-link text-decoration-none text-dark p-0 action-btn" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#comments-post-<?php echo $post["id"]; ?>" 
+                    aria-expanded="false" 
+                    aria-controls="comments-post-<?php echo $post["id"]; ?>">
+                <i class="bi bi-chat-dots me-1" aria-hidden="true"></i> 
+                <?php echo count($comments); ?> Commenti
+            </button>
         </div>
 
         <div class="<?php echo $collapseClass; ?>" id="comments-post-<?php echo $post["id"]; ?>">
@@ -91,19 +100,16 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                 <form action="process-post.php" method="POST" onsubmit="return confirm('Vuoi eliminare questo commento?');">
                                     
                                     <input type="hidden" name="action" value="4">
-                                    
                                     <input type="hidden" name="comment_id" value="<?php echo $comment['idCommento']; ?>">
-
                                     <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
-                                    
                                     <input type="hidden" name="return_page" value="<?php echo basename($_SERVER['PHP_SELF']); ?>">
                                     
                                     <?php if(isset($_GET['q'])): ?>
                                         <input type="hidden" name="q" value="<?php echo htmlspecialchars($_GET['q']); ?>">
                                     <?php endif; ?>
 
-                                    <button type="submit" class="btn btn-sm btn-link text-white p-0 border-0 ms-2" title="Elimina commento">
-                                        <i class="bi bi-x-circle"></i>
+                                    <button type="submit" class="btn btn-sm btn-link text-white p-0 border-0 ms-2" title="Elimina commento" aria-label="Elimina commento">
+                                        <i class="bi bi-x-circle text-danger" aria-hidden="true"></i>
                                     </button>
                                 </form>
                             <?php endif; ?>
@@ -123,8 +129,17 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                             <input type="hidden" name="q" value="<?php echo htmlspecialchars($_GET['q']); ?>">
                         <?php endif; ?>
 
-                        <input type="text" name="testo" class="form-control" placeholder="Scrivi un commento..." required>
-                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-send"></i></button>
+                        <label for="comment-text-<?php echo $post['id']; ?>" class="visually-hidden">Scrivi un commento</label>
+                        <input type="text" 
+                               id="comment-text-<?php echo $post['id']; ?>"
+                               name="testo" 
+                               class="form-control" 
+                               placeholder="Scrivi un commento..." 
+                               required>
+                               
+                        <button class="btn btn-outline-secondary" type="submit" aria-label="Invia commento">
+                            <i class="bi bi-send" aria-hidden="true"></i>
+                        </button>
                     </form>
                 <?php else: ?>
                     <div class="text-center mt-4 pt-3 border-top">
