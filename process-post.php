@@ -1,13 +1,11 @@
 <?php
 require_once 'bootstrap.php';
 
-// Sicurezza
 if(!isUserLoggedIn()){
     header("Location: login.php");
     exit;
 }
 
-// Setup variabili base (queste servono solo se NON facciamo redirect, es. Action 1 o errori)
 $templateParams["titolo"] = "Manage Post - UBSpotted";
 $templateParams["categorieTop"] = $dbh->getTopCategories();
 $templateParams["categorie"] = $dbh->getCategories();
@@ -23,11 +21,9 @@ foreach($stats as $row){
 $templateParams["statisticheUser"]["labels"] = $labels;
 $templateParams["statisticheUser"]["data"] = $data;
 
-// Default view
 $templateParams["nome"] = "create-post.php";
 $msg = "";
 
-// GESTIONE AZIONI
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
     
     $action = intval($_POST["action"]);
@@ -53,13 +49,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
         
         if($id){
             $msg = "Spot pubblicato con successo!";
-            // Opzionale: Se vuoi che torni alla home dopo il post, scommenta qui sotto:
-            // header("Location: index.php?formmsg=" . urlencode($msg));
-            // exit;
         } else {
             $msg = "Errore durante l'inserimento nel database.";
         }
-        // Nota: Se Action 1 non fa redirect, caricherà create-post.php col messaggio (corretto)
     }
 
     // --------------------------------------------------------------
@@ -90,27 +82,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
     // AZIONE 4: CANCELLAZIONE COMMENTO 
     // -----------------------------------------------------------
     elseif($action == 4){
-        //Definisco la pagina di ritorno (default: index.php)
         $returnPage = (isset($_POST["return_page"]) && !empty($_POST["return_page"])) ? $_POST["return_page"] : "index.php";
 
-        // Manteniamo la ricerca
         $queryString = "";
         if(isset($_POST["q"]) && !empty($_POST["q"])){
             $queryString = "&q=" . urlencode($_POST["q"]);
         }
 
-        // Recuper post_id per mantere apero il commento
         if(isset($_POST["post_id"])){
             $queryString .= "&open_post_id=" . intval($_POST["post_id"]);
         }
 
-        // Controllo Sicurezza: Solo Admin
         if(empty($_SESSION['admin']) || $_SESSION['admin'] == false){
              header("Location: $returnPage?formmsg=" . urlencode("Non autorizzato"));
              exit;
         }
 
-        // Eseguo Cancellazione
         if(isset($_POST["comment_id"])){
             $commentId = intval($_POST["comment_id"]);
             $dbh->deleteComment($commentId);
@@ -137,8 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
         } else {
             $msg = "Il commento non può essere vuoto.";
         }
-    
-        // Redirect
+
         $returnPage = isset($_POST["return_page"]) ? $_POST["return_page"] : "index.php";
         
         $queryString = "";
@@ -146,7 +132,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
             $queryString = "&q=" . urlencode($_POST["q"]);
         }
 
-        // Aggiungo il parametro per aprire la tendina
         $queryString .= "&open_post_id=" . intval($postId);
     
         header("Location: $returnPage?formmsg=" . urlencode($msg) . $queryString);
@@ -154,6 +139,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"])){
     }
 }
 
-// Se nessuna action ha fatto redirect (es. Action 1 o caricamento pagina GET), mostra la vista
 require 'template/base.php';
 ?>

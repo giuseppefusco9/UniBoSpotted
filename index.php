@@ -36,7 +36,6 @@ if(isUserLoggedIn() && isset($_POST["testo"]) && isset($_POST["post_id"])){
     }
 }
 
-//Base Template
 $templateParams["titolo"] = "UBSpotted - Home";
 $templateParams["nome"] = "lista-post.php";
 $templateParams["categorieTop"] = $dbh->getTopCategories();

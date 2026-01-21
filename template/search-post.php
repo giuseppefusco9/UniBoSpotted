@@ -39,21 +39,15 @@
     </h4>
 
     <?php 
-        // A. PREPARAZIONE DATI
-        // Assegno i risultati della ricerca alla variabile universale $postsLista
         $postsLista = $templateParams["searchResults"];
-
-        // B. INCLUSIONE LISTA
         if(count($postsLista) > 0){
             require 'template/lista-post.php';
-        } 
-        // C. CASO VUOTO (Specifico per la Ricerca)
-        else {
+        } else {
             ?>
-            <div class="alert alert-warning text-center" role="alert">
-                <span class="bi bi-emoji-frown display-4 d-block mb-2" aria-hidden="true"></span>
-                Nessun post trovato. Prova con parole diverse!
-            </div>
+                <div class="alert alert-warning text-center" role="alert">
+                    <span class="bi bi-emoji-frown display-4 d-block mb-2" aria-hidden="true"></span>
+                    Nessun post trovato. Prova con parole diverse!
+                </div>
             <?php
         }
     ?>
