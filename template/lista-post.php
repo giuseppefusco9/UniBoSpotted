@@ -61,7 +61,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
             
             <?php if(!empty($post["immagine_path"])): ?>
-                <img src="<?php echo $post["immagine_path"]; ?>" alt="Immagine allegata al post di <?php echo htmlspecialchars($post["username"]); ?>" class="img-fluid rounded mb-2">
+                <img src="<?php echo $post['immagine_path']; ?>" alt="Immagine allegata al post di <?php echo htmlspecialchars($post['username']); ?>" class="img-fluid rounded mb-2">
             <?php endif; ?>
         </div>
         
