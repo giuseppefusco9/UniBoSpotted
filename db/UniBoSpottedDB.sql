@@ -12,7 +12,7 @@ CREATE TABLE utenti (
     data_registrazione DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3. Tabella Categorie (Per i filtri: Biblioteca, Mensa, ecc.)
+-- 3. Tabella Categorie 
 CREATE TABLE categorie (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL
@@ -30,7 +30,7 @@ CREATE TABLE post (
     FOREIGN KEY (categoria_id) REFERENCES categorie(id)
 );
 
--- 5. Tabella Commenti (Opzionale ma utile per interazione)
+-- 5. Tabella Commenti 
 CREATE TABLE commenti (
     id INT AUTO_INCREMENT PRIMARY KEY,
     post_id INT NOT NULL,
@@ -40,10 +40,6 @@ CREATE TABLE commenti (
     FOREIGN KEY (post_id) REFERENCES post(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES utenti(id) ON DELETE CASCADE
 );
-
--- ==========================================
--- DATI DI ESEMPIO (Per partire subito)
--- ==========================================
 
 -- Inserimento Categorie Default
 INSERT INTO categorie (nome) VALUES 
@@ -55,11 +51,3 @@ INSERT INTO categorie (nome) VALUES
 ('Esami'),
 ('Affitti'),
 ('Altro');
-
-/* CREDENZIALI ADMIN: Username: Admin Password: admin*/
-
-/* CREDENZIALI USERS:
-User: MarcoRossi / Pass: admin
-User: GiuliaB / Pass: admin
-User: LucaNerd / Pass: admin
-**/
