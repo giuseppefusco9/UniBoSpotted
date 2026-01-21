@@ -5,12 +5,13 @@
         <form action="search.php" method="GET">
             <div class="input-group input-group-lg">
                 <span class="input-group-text bg-white border-end-0">
-                    <i class="bi bi-search text-muted"></i>
+                    <span class="bi bi-search text-muted" aria-hidden="true"></span>
                 </span>
                 
                 <input type="search" class="form-control border-start-0 ps-0" 
+                       aria-label="Cerca nel sito"
                        placeholder="Cerca post, utenti, categorie..." 
-                       aria-label="Cerca" name="q" 
+                       name="q" 
                        value="<?php echo isset($templateParams["searchKeyword"]) ? $templateParams["searchKeyword"] : ''; ?>">
                 
                 <button class="btn btn-unibo" type="submit">Cerca</button>
@@ -50,7 +51,7 @@
         else {
             ?>
             <div class="alert alert-warning text-center" role="alert">
-                <i class="bi bi-emoji-frown display-4 d-block mb-2"></i>
+                <span class="bi bi-emoji-frown display-4 d-block mb-2" aria-hidden="true"></span>
                 Nessun post trovato. Prova con parole diverse!
             </div>
             <?php

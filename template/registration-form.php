@@ -3,7 +3,7 @@
         
         <div class="text-center mb-4">
             <div class="mb-3">
-                <i class="bi bi-person-plus-fill display-4 text-unibo"></i>
+                <span class="bi bi-person-plus-fill display-4 text-unibo" aria-hidden="true"></span>
             </div>
             <h2 class="h4 fw-bold">Unisciti a UniBoSpotted</h2>
             <p class="text-muted small">Crea il tuo account</p>
@@ -11,7 +11,7 @@
 
         <?php if(!empty($templateParams["erroreRegistrazione"])): ?>
             <div class="alert alert-danger d-flex align-items-center p-2" role="alert">
-                <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                <span class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" aria-hidden="true"></span>
                 <div class="small">
                     <?php echo $templateParams["erroreRegistrazione"]; ?>
                 </div>
