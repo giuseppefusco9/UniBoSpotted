@@ -28,7 +28,7 @@
                 <?php if(isUserLoggedIn()): ?>
                 <div class="col-3 text-end d-none d-md-block">
                     <a href="logout.php" class="btn btn-outline-light">
-                        <i class="bi bi-box-arrow-right me-1" aria-hidden="true"></i> Logout
+                        <span class="bi bi-box-arrow-right me-1" aria-hidden="true"></span> Logout
                     </a>
                 </div>
                 <?php endif; ?>
@@ -53,23 +53,23 @@
 
                             <a class="nav-link <?php isActive('index.php'); ?>" href="index.php"
                                <?php echo ($currentPage == 'index.php') ? 'aria-current="page"' : ''; ?>>
-                                <i class="bi bi-house-door-fill me-2" aria-hidden="true"></i> Home
+                                <span class="bi bi-house-door-fill me-2" aria-hidden="true"></span> Home
                             </a>
 
                             <a class="nav-link <?php isActive('search.php'); ?>" href="search.php"
                                <?php echo ($currentPage == 'search.php') ? 'aria-current="page"' : ''; ?>>
-                                <i class="bi bi-search me-2" aria-hidden="true"></i> Search
+                                <span class="bi bi-search me-2" aria-hidden="true"></span> Search
                             </a>
 
                             <a class="nav-link <?php isActive('login.php'); ?>" href="login.php"
                                <?php echo ($currentPage == 'login.php') ? 'aria-current="page"' : ''; ?>>
-                                <i class="bi bi-person-circle me-2" aria-hidden="true"></i> Profile
+                                <span class="bi bi-person-circle me-2" aria-hidden="true"></span> Profile
                             </a>
 
                             <?php if(isUserLoggedIn()): ?>
                                 <a class="nav-link <?php isActive('process-post.php'); ?>" href="process-post.php"
                                    <?php echo ($currentPage == 'process-post.php') ? 'aria-current="page"' : ''; ?>>
-                                    <i class="bi bi-plus me-2" aria-hidden="true"></i> Add post
+                                    <span class="bi bi-plus me-2" aria-hidden="true"></span> Add post
                                 </a>
                             <?php endif; ?>
 
@@ -81,7 +81,7 @@
             <main class="col-md-6 mb-4">
                 <?php if(isset($templateParams["formmsg"])): ?>
                     <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-3" role="alert">
-                        <i class="bi bi-check-circle-fill me-2"></i>
+                        <span class="bi bi-check-circle-fill me-2"></span>
                         <?php echo $templateParams["formmsg"]; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
@@ -97,7 +97,7 @@
                 
                 <aside class="bg-white border rounded shadow-sm p-3 mb-4" aria-labelledby="trend-title">
                     <div class="d-flex align-items-center mb-3">
-                        <i class="bi bi-graph-up-arrow text-danger me-2 fs-5" aria-hidden="true"></i>
+                        <span class="bi bi-graph-up-arrow text-danger me-2 fs-5" aria-hidden="true"></span>
                         <h2 class="h5 fw-bold mb-0" id="trend-title">Trend del momento</h2>
                     </div>
                     <div class="list-group list-group-flush">
@@ -115,7 +115,7 @@
                 <?php if(isUserLoggedIn()): ?>
                     <aside class="bg-white border rounded shadow-sm p-3 mb-4" aria-labelledby="stats-title">
                         <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-pie-chart-fill text-primary me-2 fs-5" aria-hidden="true"></i>
+                            <span class="bi bi-pie-chart-fill text-primary me-2 fs-5" aria-hidden="true"></span>
                             <h2 class="h5 fw-bold mb-0" id="stats-title">Le tue statistiche</h2>
                         </div>
                         <div class="d-flex justify-content-center" style="position: relative; height: 350px; width: 100%">
@@ -132,7 +132,7 @@
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase fw-bold mb-3">UniBoSpotted</h5>
+                    <h3 class="h5 text-uppercase fw-bold mb-3">UniBoSpotted</h3>
                     <p class="small text-white-50">
                         La community non ufficiale degli studenti dell'Alma Mater Studiorum.
                         Racconta, condividi e scopri la vita universitaria.
@@ -143,7 +143,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase fw-bold mb-3">Link Utili</h5>
+                    <h3 class="h5 text-uppercase fw-bold mb-3">Link Utili</h3>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2">
                             <a href="about.php" class="text-white-50 text-decoration-none link-light">Chi siamo</a>
@@ -155,16 +155,16 @@
                 </div>
 
                 <div class="col-lg-4 col-md-12">
-                    <h5 class="text-uppercase fw-bold mb-3">Autori</h5>
+                    <h3 class="h5 text-uppercase fw-bold mb-3">Autori</h3>
 
                     <div class="mb-3">
                         <div class="d-flex align-items-center gap-2 mb-1">
                             <span class="fw-bold text-white">Giuseppe Fusco</span>
                             <a href="https://www.instagram.com/_.giuseppefusco.__/" class="text-white text-decoration-none" aria-label="Instagram Giuseppe">
-                                <i class="bi bi-instagram"></i>
+                                <span class="bi bi-instagram"></span>
                             </a>
                             <a href="https://github.com/giuseppefusco9" class="text-white text-decoration-none" aria-label="GitHub Giuseppe">
-                                <i class="bi bi-github"></i>
+                                <span class="bi bi-github"></span>
                             </a>
                         </div>
                         <p class="small text-white-50 mb-0">giuseppe.fusco9@studio.unibo.it</p>
@@ -174,10 +174,10 @@
                         <div class="d-flex align-items-center gap-2 mb-1">
                             <span class="fw-bold text-white">Lucia Pola</span>
                             <a href="https://www.instagram.com/luciapola_/" class="text-white text-decoration-none" aria-label="Instagram Lucia">
-                                <i class="bi bi-instagram"></i>
+                                <span class="bi bi-instagram"></span>
                             </a>
                             <a href="https://github.com/luciapola04" class="text-white text-decoration-none" aria-label="GitHub Lucia">
-                                <i class="bi bi-github"></i>
+                                <span class="bi bi-github"></span>
                             </a>
                         </div>
                         <p class="small text-white-50 mb-0">lucia.pola@studio.unibo.it</p>
@@ -202,31 +202,31 @@
             
             <a class="nav-link text-center <?php isActive('index.php'); ?>" href="index.php"
                <?php echo ($currentPage == 'index.php') ? 'aria-current="page"' : ''; ?>>
-                <i class="bi bi-house-door-fill fs-4 text-white" aria-hidden="true"></i>
+                <span class="bi bi-house-door-fill fs-4 text-white" aria-hidden="true"></span>
                 <div class="small text-white">Home</div>
             </a>
 
             <a class="nav-link text-center <?php isActive('search.php'); ?>" href="search.php"
                <?php echo ($currentPage == 'search.php') ? 'aria-current="page"' : ''; ?>>
-                <i class="bi bi-search fs-4 text-white" aria-hidden="true"></i>
+                <span class="bi bi-search fs-4 text-white" aria-hidden="true"></span>
                 <div class="small text-white">Search</div>
             </a>
 
             <a class="nav-link text-center <?php isActive('login.php'); ?>" href="login.php"
                <?php echo ($currentPage == 'login.php') ? 'aria-current="page"' : ''; ?>>
-                <i class="bi bi-person-circle fs-4 text-white" aria-hidden="true"></i>
+                <span class="bi bi-person-circle fs-4 text-white" aria-hidden="true"></span>
                 <div class="small text-white">Profile</div>
             </a>
             
             <?php if(isUserLoggedIn()): ?>
                 <a class="nav-link text-center <?php isActive('process-post.php'); ?>" href="process-post.php"
                    <?php echo ($currentPage == 'process-post.php') ? 'aria-current="page"' : ''; ?>>
-                    <i class="bi bi-plus fs-4 text-white" aria-hidden="true"></i>
+                    <span class="bi bi-plus fs-4 text-white" aria-hidden="true"></span>
                     <div class="small text-white">Add Post</div>
                 </a>
 
                 <a class="nav-link text-center" href="logout.php">
-                    <i class="bi bi-box-arrow-right fs-4 text-white" aria-hidden="true"></i>
+                    <span class="bi bi-box-arrow-right fs-4 text-white" aria-hidden="true"></span>
                     <div class="small text-white">Logout</div>
                 </a>
             <?php endif; ?>
