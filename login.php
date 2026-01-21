@@ -19,6 +19,8 @@ if(isUserLoggedIn()){
     $templateParams["username"] = $_SESSION["username"];
     $templateParams["nome"] = "login-home.php";
     $templateParams["userposts"] = $dbh->getPostsByAuthorId($_SESSION["id"]);
+    $templateParams["numUserPosts"] = $dbh->getNumberOfPosts($_SESSION["id"]);
+    $templateParams["numUserComments"] = $dbh->getNumberOfComments($_SESSION["id"]);
 
     $userId = $_SESSION['id']; 
     $stats = $dbh->getUserPostStats($userId);
