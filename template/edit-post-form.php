@@ -18,9 +18,10 @@
 
             <input type="hidden" name="return_page" value="<?php echo isset($templateParams['return_page']) ? htmlspecialchars($templateParams['return_page']) : 'login.php'; ?>">
             <input type="hidden" name="q" value="<?php echo isset($templateParams['q']) ? htmlspecialchars($templateParams['q']) : ''; ?>">
+            
             <div class="mb-3">
-                <label class="form-label fw-bold">Categoria</label>
-                <select name="categoria" class="form-select" required>
+                <label for="categoria" class="form-label fw-bold">Categoria</label>
+                <select id="categoria" name="categoria" class="form-select" required>
                     <?php foreach($templateParams["categorie"] as $cat): ?>
                         <?php 
                             $selected = ($cat['id'] == $templateParams['post']['categoria_id']) ? 'selected' : ''; 
@@ -33,21 +34,23 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label fw-bold">Testo dello Spot</label>
-                <textarea name="testo" class="form-control" rows="5" required><?php echo htmlspecialchars($templateParams['post']['testo']); ?></textarea>
+                <label for="testo" class="form-label fw-bold">Testo dello Spot</label>
+                <textarea id="testo" name="testo" class="form-control" rows="5" required><?php echo htmlspecialchars($templateParams['post']['testo']); ?></textarea>
             </div>
 
             <div class="mb-4">
-                <label class="form-label fw-bold">Immagine (Opzionale)</label>
+                <label for="immagine" class="form-label fw-bold">Immagine (Opzionale)</label>
                 
                 <?php if(!empty($templateParams['post']['immagine_path'])): ?>
                     <div class="mb-2 p-2 border rounded bg-light text-center">
                         <small class="d-block text-muted mb-1">Immagine attuale:</small>
-                        <img src="<?php echo $templateParams['post']['immagine_path']; ?>" style="max-height: 150px; border-radius: 5px;">
+                        <img src="<?php echo $templateParams['post']['immagine_path']; ?>" 
+                             alt="Anteprima immagine attuale dello spot"
+                             style="max-height: 150px; border-radius: 5px;">
                     </div>
                 <?php endif; ?>
                 
-                <input type="file" name="immagine" class="form-control" accept="image/*">
+                <input type="file" id="immagine" name="immagine" class="form-control" accept="image/*">
                 <div class="form-text">
                     Carica un file solo se vuoi sostituire quella attuale. Formati: JPG, PNG.
                 </div>
@@ -58,7 +61,6 @@
                 <?php 
                     $backLink = isset($templateParams['return_page']) ? $templateParams['return_page'] : 'login.php';
                     
-                    // Se c'è una ricerca, la aggiungiamo al link di annulla
                     if(isset($templateParams['q']) && !empty($templateParams['q'])){
                         $backLink .= "?q=" . urlencode($templateParams['q']);
                     }
