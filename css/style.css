@@ -10,22 +10,22 @@
 
 /* Bottone personalizzato UniBo */
 .btn-unibo {
-    background-color: var(--unibo-red); /* Il tuo rosso #ba0909 */
+    background-color: var(--unibo-red);
     border-color: var(--unibo-red);
-    color: white; /* Testo bianco */
+    color: white;
     font-weight: 500;
 }
 
 /* Effetto quando passi sopra col mouse (diventa più scuro) */
 .btn-unibo:hover {
-    background-color: #8f0606; /* Un rosso più scuro */
+    background-color: #8f0606;
     border-color: #8f0606;
     color: white;
 }
 
 .text-unibo {
     color: var(--unibo-red) !important;
-    fill: var(--unibo-red) !important; /* Sicurezza extra per SVG */
+    fill: var(--unibo-red) !important;
 }
 
 /* Rende il cursore una "manina" sugli elementi cliccabili che non sono link <a> veri */
@@ -62,9 +62,7 @@
     color: var(--unibo-red);
 }
 
-/* =========================================
-   SEZIONE COMMENTI
-   ========================================= */
+/* SEZIONE COMMENTI */
 
 /* Il box grigio del singolo commento */
 .comment-box {
