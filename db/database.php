@@ -242,7 +242,6 @@ class DatabaseHelper {
      * Cerca post per testo, categoria o username
      */
     public function searchPosts($keyword){
-        // Mettiamo i % per cercare la parola ovunque nella frase
         $param = "%" . $keyword . "%";
 
         $query = "SELECT p.id, p.testo, p.immagine_path, p.data_pubblicazione, 
@@ -260,6 +259,29 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Conta il numero di post di un autore specifico
+     */
+    public function getNumberOfPosts($author_id){
+        $query = "SELECT COUNT(*) as total FROM post WHERE user_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $author_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['total'];
+    }
+
+    public function getNumberOfComments($author_id){
+        $query = "SELECT COUNT(*) as total FROM commenti WHERE user_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $author_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['total'];
     }
 }
 ?>
