@@ -95,7 +95,7 @@
     font-weight: 500; 
 }
 
-/* SEZIONE COMMENTI */
+/* SEZIONE POST E COMMENTI */
 
 /* Il box grigio del singolo commento */
 .comment-box {
@@ -147,6 +147,8 @@
     object-fit: contain;    
     border-radius: 5px;
 }
+
+/* SEARCHBAR */
 
 /* Badge Categorie Cliccabili nella ricerca */
 .badge-category {
