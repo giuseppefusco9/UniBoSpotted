@@ -107,7 +107,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                     <?php endif; ?>
 
                                     <button type="submit" class="btn btn-sm btn-link text-white p-0 border-0 ms-2" title="Elimina commento" aria-label="Elimina commento">
-                                        <span class="bi bi-x-circle text-danger" aria-hidden="true"></span>
+                                        <span class="bi bi-x-circle text-danger text-white" aria-hidden="true"></span>
                                     </button>
                                 </form>
                             <?php endif; ?>
