@@ -61,7 +61,7 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
             <p class="card-text"><?php echo ($post["testo"]); ?></p>
             
             <?php if(!empty($post["immagine_path"])): ?>
-                <img src="<?php echo $post['immagine_path']; ?>" alt="Immagine allegata al post di <?php echo htmlspecialchars($post['username']); ?>" class="img-fluid rounded mb-2">
+                <img src="<?php echo $post['immagine_path']; ?>" alt="Immagine allegata al post di <?php echo htmlspecialchars($post['username']); ?>" class="post-img-feed mb-2">
             <?php endif; ?>
         </div>
         
@@ -106,8 +106,8 @@ $openPostId = isset($_GET['open_post_id']) ? $_GET['open_post_id'] : null;
                                         <input type="hidden" name="q" value="<?php echo htmlspecialchars($_GET['q']); ?>">
                                     <?php endif; ?>
 
-                                    <button type="submit" class="btn btn-sm btn-link text-white p-0 border-0 ms-2" title="Elimina commento" aria-label="Elimina commento">
-                                        <span class="bi bi-x-circle text-danger text-white" aria-hidden="true"></span>
+                                    <button type="submit" class="btn btn-sm btn-link p-0 border-0 btn-delete-comment" title="Elimina commento" aria-label="Elimina commento">
+                                        <span class="bi bi-x-circle fs-6" aria-hidden="true"></span>
                                     </button>
                                 </form>
                             <?php endif; ?>

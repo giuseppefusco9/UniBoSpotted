@@ -1,6 +1,6 @@
 <div class="card shadow-sm border-0">
     <div class="card-header bg-white">
-        <h1 class="h4 mb-0 fw-bold text-center">Nuovo Spot</h1>
+        <h2 class="h4 mb-0 fw-bold text-center">Nuovo Spot</h2>
     </div>
     <div class="card-body p-4">
 

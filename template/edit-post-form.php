@@ -1,6 +1,6 @@
 <div class="card shadow-sm border-0">
     <div class="card-header bg-white">
-        <h1 class="h4 mb-0 fw-bold text-center">Modifica Spot</h1>
+        <h2 class="h4 mb-0 fw-bold text-center">Modifica Spot</h2>
     </div>
     
     <div class="card-body p-4">
@@ -46,7 +46,7 @@
                         <small class="d-block text-muted mb-1">Immagine attuale:</small>
                         <img src="<?php echo $templateParams['post']['immagine_path']; ?>" 
                              alt="Anteprima immagine attuale dello spot"
-                             style="max-height: 150px; border-radius: 5px;">
+                             class="img-preview-edit">
                     </div>
                 <?php endif; ?>
                 

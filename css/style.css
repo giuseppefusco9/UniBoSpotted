@@ -1,5 +1,6 @@
 :root {
     --unibo-red: #ba0909;
+    --unibo-red-dark: #8f0606;
 }
 
 /* Sfondo Rosso UniBo (Header/Footer) */
@@ -16,10 +17,23 @@
     font-weight: 500;
 }
 
+/* Logo UniBo */
+.logo-unibo {
+    width: 120px;
+    height: auto;
+}
+
+/* Rimpicciolisce leggermente su schermi molto piccoli (mobile) */
+@media (max-width: 576px) {
+    .logo-unibo {
+        width: 100px;
+    }
+}
+
 /* Effetto quando passi sopra col mouse (diventa più scuro) */
 .btn-unibo:hover {
-    background-color: #8f0606;
-    border-color: #8f0606;
+    background-color: var(--unibo-red-dark);
+    border-color: var(--unibo-red-dark);
     color: white;
 }
 
@@ -62,6 +76,25 @@
     color: var(--unibo-red);
 }
 
+@keyframes fadeOutEffect {
+    0% {
+        background-color: rgba(255, 255, 255, 0.3); 
+    }
+    60% {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        background-color: transparent; 
+    }
+}
+
+/* Navbar Mobile - Stato Attivo */
+.navbar.fixed-bottom .nav-link.active {
+    animation: fadeOutEffect 1.5s ease-out forwards;
+    border-radius: 10px;
+    font-weight: 500; 
+}
+
 /* SEZIONE COMMENTI */
 
 /* Il box grigio del singolo commento */
@@ -85,4 +118,48 @@
 .comment-text {
     font-size: 0.9rem;
     color: #e9ecef;
+}
+
+/* Bottone Delete dentro il box rosso dei commenti */
+.btn-delete-comment {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s;
+}
+
+/*Effetto quando passi sopra il bottone delete*/
+.btn-delete-comment:hover {
+    color: #ffffff; 
+}
+
+/* Anteprima immagine in fase di modifica */
+.img-preview-edit {
+    max-height: 150px;
+    border-radius: 5px;
+    object-fit: cover; 
+    display: block;
+    margin: 0 auto; 
+}
+
+/* Immagine nel feed */
+.post-img-feed {
+    max-height: 500px;      
+    width: 100%;            
+    object-fit: contain;    
+    border-radius: 5px;
+}
+
+/* Badge Categorie Cliccabili nella ricerca */
+.badge-category {
+    color: #333; 
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover: diventa rosso UniBo con testo bianco */
+.badge-category:hover {
+    background-color: var(--unibo-red);
+    color: white;
+    border-color: var(--unibo-red);
 }

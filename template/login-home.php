@@ -38,8 +38,12 @@
 ?>
 
 <?php if(count($postsLista) == 0): ?>
-    <p class="text-muted">
-        Non hai ancora pubblicato nessuno spot. Cosa aspetti? 
-        <a href="process-post.php">Crea il tuo primo spot!</a>
-    </p>
+    <div class="text-center py-5 border rounded-3 bg-white">
+        <p class="text-muted mb-2">
+            Non hai ancora pubblicato nessuno spot. Cosa aspetti?
+        </p>
+        <a href="process-post.php" class="text-primary fw-bold text-decoration-underline">
+            Crea il tuo primo spot!
+        </a>
+    </div>
 <?php endif; ?>

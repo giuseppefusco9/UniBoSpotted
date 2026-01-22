@@ -70,7 +70,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
                 
-                <span class="text-uppercase text-danger fw-bold letter-spacing-2">Il Progetto</span>
+                <span class="text-uppercase text-unibo fw-bold letter-spacing-2">Il Progetto</span>
                 <h2 class="fw-bold mb-4">Dagli studenti, per gli studenti</h2>
                 
                 <p class="text-secondary lead"> 

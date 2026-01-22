@@ -22,7 +22,7 @@
             <small class="text-muted me-2">Suggerimenti:</small>
             <?php foreach($templateParams["categorieTop"] as $categoria): ?>
                 <a href="search.php?q=<?php echo urlencode($categoria["nome"]); ?>" class="text-decoration-none">
-                    <span class="badge rounded-pill text-bg-light border me-1 param-cursor">
+                    <span class="badge rounded-pill badge-category me-1">
                         <?php echo $categoria["nome"]; ?>
                     </span>
                 </a>
@@ -44,9 +44,15 @@
             require 'template/lista-post.php';
         } else {
             ?>
-                <div class="alert alert-warning text-center" role="alert">
-                    <span class="bi bi-emoji-frown display-4 d-block mb-2" aria-hidden="true"></span>
-                    Nessun post trovato. Prova con parole diverse!
+                <div class="text-center py-5 border rounded-3 bg-white shadow-sm">
+                    <div class="mb-3">
+                        <span class="bi bi-search display-1 text-secondary opacity-25" aria-hidden="true"></span>
+                    </div>
+                    
+                    <h3 class="h5 text-muted fw-normal">Nessun risultato trovato</h3>
+                    <p class="text-muted small mb-0">
+                        Prova a inserire parole diverse
+                    </p>
                 </div>
             <?php
         }

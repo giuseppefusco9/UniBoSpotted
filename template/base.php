@@ -13,11 +13,11 @@
 
 <body class="bg-light container-fluid p-0 overflow-x-hidden d-flex flex-column min-vh-100">
     
-    <header class="bg-unibo py-4 text-white shadow-sm">
+    <header class="bg-unibo py-4 shadow-sm">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-3 text-start">
-                    <img src="upload/logoUnibo.png" alt="Logo Università di Bologna" style="width: 120px; height: auto;">
+                    <img src="upload/logoUnibo.png" alt="Logo Università di Bologna" class="logo-unibo">
                 </div>
 
                 <div class="col-6 text-center">
@@ -97,7 +97,7 @@
                 
                 <aside class="bg-white border rounded shadow-sm p-3 mb-4" aria-labelledby="trend-title">
                     <div class="d-flex align-items-center mb-3">
-                        <span class="bi bi-graph-up-arrow text-danger me-2 fs-5" aria-hidden="true"></span>
+                        <span class="bi bi-graph-up-arrow text-unibo me-2 fs-5" aria-hidden="true"></span>
                         <h2 class="h5 fw-bold mb-0" id="trend-title">Trend del momento</h2>
                     </div>
                     <div class="list-group list-group-flush">
@@ -127,7 +127,7 @@
         </div>
     </div>
 
-    <footer class="bg-unibo text-white pt-5 pb-3 mt-auto mb-5 mb-md-0">
+    <footer class="bg-unibo pt-5 pb-3 mt-auto mb-5 mb-md-0">
         <div class="container">
             <div class="row">
 

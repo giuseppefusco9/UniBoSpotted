@@ -40,9 +40,9 @@
             </div>
 
             <div class="d-grid gap-2 d-md-flex">
-                <a href="login.php" class="btn btn-outline-secondary flex-grow-1">
-                    Annulla
-                </a>
+                <button type="reset" class="btn btn-outline-secondary flex-grow-1">
+                    Cancella
+                </button>
 
                 <button class="btn btn-unibo py-2 flex-grow-1" type="submit">
                     Accedi
